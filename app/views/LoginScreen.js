@@ -18,9 +18,6 @@ const IntroSection = ({ style }) => {
     )
 }
 
-
-
-
 export function GoogleIcon(props) {
   return (
     <Svg
