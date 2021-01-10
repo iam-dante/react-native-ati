@@ -1,8 +1,9 @@
-import 'react-native-gesture-handler';
+import 'react-native-gesture-handler'
 
 import * as React from 'react'
 import LoginScreen from './app/views/LoginScreen'
-import ScheduleScreen from './app/views/base/ScheduleScreen';
+import ScheduleScreen from './app/views/base/ScheduleScreen'
+import HomeScreen from './app/views/base/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
 
 export default () => {

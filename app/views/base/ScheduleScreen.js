@@ -108,6 +108,7 @@ function ScheduleScreen () {
                     <ScrollView 
                         horizontal 
                         alwaysBounceHorizontal
+                        showsHorizontalScrollIndicator={false}
                         style={{ width: '100%'}}>
                         {
                             (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']).map((day, ix) => (
