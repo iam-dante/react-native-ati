@@ -1,5 +1,5 @@
 import * as fonts from './fonts'
-import * as colors from './colors'
+import colors from './colors'
 
 export {
     fonts, colors

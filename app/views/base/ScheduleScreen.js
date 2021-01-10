@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, SafeAreaView } from 'react-native'
 import { View, Text, StyleSheet } from 'react-native'
+import MainContainer from '../../components/containers/Container/MainContainer'
 import { ATiLogoMini } from '../../components/vectors/logo'
 import { Font, FontStyle } from '../../internals/theme/fonts'
 
@@ -24,7 +25,16 @@ const text = StyleSheet.create({
 
 const DayTag = ({ label }) => {
     return (
-        <View style={{ alignItems: 'center', justifyContent:'center', flexDirection: 'column', paddingHorizontal: 12, height: 35, paddingVertical: 8, marginHorizontal: 5, backgroundColor: '#FFF', borderRadius: 2 }}>
+        <View style={{ 
+            alignItems: 'center', 
+            justifyContent:'center', 
+            flexDirection: 'column', 
+            paddingHorizontal: 12, 
+            height: 35, 
+            paddingVertical: 8, 
+            marginHorizontal: 5, 
+            backgroundColor: '#FFF', 
+            borderRadius: 2 }}>
             <Text style={{ ...Font.baseStyle }}>{label}</Text>
         </View>
     )
@@ -81,24 +91,13 @@ const userSubjectData = [
     { subject: 'IS 362', title: 'Mobile Android Dev.', venue: 'D01 - Luhanga Hall', time: '1800 - 2000' },
 ]
 
-/**
- * Building for the schedule screen
- */
 function ScheduleScreen () {
     return (
-        <View style={{ flex: 1, backgroundColor: '#304B65'}}>
-            <View style={{ flexGrow: 0.04, flexDirection: 'row', alignItems: 'center', position: 'relative', ...view.padded }}>
-                <ATiLogoMini width={40} height={40} />
-
-                {/* Logo */}
-                <View style={{ position: 'absolute', right: 16, borderRadius: 100, width: 38, height: 38, backgroundColor: '#3EE294' }}></View>
-            </View>
-
+        <MainContainer>
             <View style={{ ...view.padded, width: '100%' }}>
                 <Text style={{ ...Font.displayStyle, ...text.white }}>Schedule</Text>
                 <Text style={{ ...Font.baseStyle, ...text.white }}>This is the schedule screen</Text>
             </View>
-
             {/* Selection of the subjects */}
             <View style={{ flex: 1, width: '100%'}}>
                 {/* weekly options for the schedule */}
@@ -108,6 +107,8 @@ function ScheduleScreen () {
                     <ScrollView 
                         horizontal 
                         alwaysBounceHorizontal
+                        showsHorizontalScrollIndicator={false}
+                        showsVerticalScrollIndicator={false}
                         style={{ width: '100%'}}>
                         {
                             (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']).map((day, ix) => (
@@ -128,7 +129,7 @@ function ScheduleScreen () {
                     }
                 </View>
             </View>
-        </View>
+        </MainContainer>
     )
 }
 
