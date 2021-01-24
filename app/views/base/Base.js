@@ -1,73 +1,48 @@
-/**
- * This screen would posses the 
- * overra application screen.
- * 
- * This screen would be bound with the react-navigation
- */
 import React from 'react'
+import AboutScreen from './AboutScreen'
+import MainScreen from './MainScreen'
+import UniversityScreen from './UniversityScreen'
+import SubjectScreen from './SubjectScreen'
+
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
+import DrawerContent from './DrawerContent'
+import { Font, FontStyle } from '../../internals/theme/fonts'
 
-// Screens
-import ScheduleScreen from './ScheduleScreen'
-import HomeScreen from './HomeScreen'
-import FilesScreen from './FilesScreen'
+const Drawer = createDrawerNavigator();
 
-// Icons
-import { ArchiveIcon, CalendarIcon, HeartIcon } from '../../components/vectors/icons'
-import { colors } from '../../internals/theme'
-
-const Tab = createMaterialBottomTabNavigator()
-
-const Name = {
-    FOR_YOU: "ForYou",
-    SCHEDULE: "Schedule",
-    FILES: "Files"
-}
-/**
- * The main app screen
- */
-function Base () {
+export default () =>{
     return (
-        <NavigationContainer>
-            <Tab.Navigator
-                initialRouteName={Name.FOR_YOU}
-                activeColor="#f0edf6"
-                inactiveColor="#eee"
-                style={{ backgroundColor: 'tomato' }}
-                barStyle={{ backgroundColor: colors.primary.dark }}>
-                <Tab.Screen 
-                    name={Name.FOR_YOU} 
-                    component={HomeScreen}
-                    options={{
-                        tabBarLabel: 'For You',
-                        tabBarIcon: ({ color }) => (
-                            <HeartIcon color={color} width={26} height={26} />
-                        )
-                    }} />
-                <Tab.Screen 
-                    name={Name.SCHEDULE} 
-                    component={ScheduleScreen}
-                    options={{
-                        tabBarLabel: 'Schedule',
-                        tabBarIcon: ({ color }) => (
-                            <CalendarIcon color={color} width={26} height={26} />
-                        )
-                    }} />
-                <Tab.Screen 
-                    name={Name.FILES} 
-                    component={FilesScreen}
-                    options={{
-                        tabBarLabel: 'Files',
-                        tabBarIcon: ({ color }) => (
-                            <ArchiveIcon color={color} width={26} height={26} />
-                        )
-                    }} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    )
+    <NavigationContainer>
+        <Drawer.Navigator 
+        initialRouteName="Home" 
+        drawerPosition='right'
+        backBehavior='firstRoute'
+        // drawerType='slide'
+        drawerStyle={{
+            backgroundColor: '#142C44',
+            flex: 1,
+        }}
+        drawerContent = {props => <DrawerContent {...props}/>}
+        drawerContentOptions = {{
+            activeBackgroundColor: '#8DACC9',
+            activeTintColor: '#000',
+            inactiveTintColor: '#FFF',
+            style: {flex: 1},
+            itemStyle: { width:'100%', borderTopLeftRadius:100, borderBottomLeftRadius:100, paddingLeft:16, },
+            labelStyle: {
+                ...FontStyle.bold
+                
+            },
+        }}
+        gestureEnabled
+        lazy>
+            
+            <Drawer.Screen name="Home" component={MainScreen} />
+            <Drawer.Screen name="University" component={UniversityScreen} />
+            <Drawer.Screen name="Subjects" component={SubjectScreen} />
+            <Drawer.Screen name="About" component={AboutScreen} />
+        </Drawer.Navigator>
+    </NavigationContainer>
+    );
 }
-
-
-export default Base
