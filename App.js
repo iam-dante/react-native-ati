@@ -5,6 +5,7 @@ import LoginScreen from './app/views/LoginScreen'
 import ScheduleScreen from './app/views/base/ScheduleScreen'
 import HomeScreen from './app/views/base/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
+import Base from './app/views/base/Base';
 
 export default () => {
     // const [doneLoading, setDoneLoading] = useState(false)
@@ -23,7 +24,7 @@ export default () => {
 
     return (
         // <SplashScreen />
-        <ScheduleScreen />
+        <Base />
     );
 }
 
