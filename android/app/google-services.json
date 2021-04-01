@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "750829552810",
-    "project_id": "ati-demo",
-    "storage_bucket": "ati-demo.appspot.com"
+    "project_number": "358142856350",
+    "project_id": "ati-dem",
+    "storage_bucket": "ati-dem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:750829552810:android:3a2c2ca167e8c7ed99fcd3",
+        "mobilesdk_app_id": "1:358142856350:android:94073b513acba63a4c7f8f",
         "android_client_info": {
-          "package_name": "com.ati"
+          "package_name": "com.ATI"
         }
       },
       "oauth_client": [
         {
-          "client_id": "750829552810-trmlk109bbvh04niq26so8dfq1uldnrn.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ati",
-            "certificate_hash": "f6e8c4ba6f75686493fb1e3ad295a13b3589e83b"
-          }
-        },
-        {
-          "client_id": "750829552810-hbls70l090rd6fv00b879l1q91ft2v7n.apps.googleusercontent.com",
+          "client_id": "358142856350-3esgqh0dqi3i00pllkbm85h07f8lkiqv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAtnvxWfDjKLtxN3o9RM8SktyFeqxGLRzQ"
+          "current_key": "AIzaSyBllSOJ_RDKWpaPMDAw3lnWzuYRQETZbgk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "750829552810-hbls70l090rd6fv00b879l1q91ft2v7n.apps.googleusercontent.com",
+              "client_id": "358142856350-3esgqh0dqi3i00pllkbm85h07f8lkiqv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

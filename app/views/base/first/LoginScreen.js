@@ -4,8 +4,26 @@ import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
 // import { useNavigation } from '@react-navigation/native'
+import auth from '@react-native-firebase/auth';
+
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId: '358142856350-3esgqh0dqi3i00pllkbm85h07f8lkiqv.apps.googleusercontent.com',
+});
 
 
+async function onGoogleButtonPress() {
+  // Get the users ID token
+  const { idToken } = await GoogleSignin.signIn();
+
+  // Create a Google credential with the token
+  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+  // Sign-in the user with the credential
+  return auth().signInWithCredential(googleCredential);
+  
+}
 
 const IntroSection = ({ style }) => {
     return (
@@ -79,7 +97,7 @@ const LoginSection = ({ style,   }) => {
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
             <GoogleSignInButton 
-              onPress={() => { console.log("Button was clicked") }}/>
+              onPress={() => { onGoogleButtonPress()}}/>
             {/* SubText */}
             <Text style={{ fontSize: 11, color: '#9E9A9A', marginVertical: 5, fontFamily: 'DMSans-Italic'}}>Exclusive to invited members only.</Text>
         </View>
@@ -103,6 +121,21 @@ const LoginSection = ({ style,   }) => {
 
 
 export default function () {
+
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
     return (
       <>
       <StatusBar backgroundColor='#000000' />

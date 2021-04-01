@@ -32,9 +32,9 @@ export default () => {
     return (
         <>
             {/* <InitialScreen /> */}
-        {/* <LoginScreen/> */}
-        {/* {/* <FillScreen/> */}
-            <CoreApp/> 
+            <LoginScreen/> 
+            {/* <FillScreen/> */}
+            {/* <CoreApp/>  */}
         </>
     );
 }
