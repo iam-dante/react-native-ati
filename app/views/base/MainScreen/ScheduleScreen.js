@@ -79,7 +79,7 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
                 <View style={{backgroundColor: live ? '#FF7D7D': '#039E09', borderRadius:10, paddingHorizontal:4, flexDirection:'row', alignItems:'center'}}>
                     {
                         live ?
-                        (   <BlinkView blinking delay={1000}>
+                        (   <BlinkView  blinking delay={1000}>
                                 <View style={{height:10, width:10, backgroundColor:'red', borderRadius:5, marginHorizontal:2}} />
                             </BlinkView>
                         ): null

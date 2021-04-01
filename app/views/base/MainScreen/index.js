@@ -32,13 +32,13 @@ function Base () {
     return (
         
             <Tab.Navigator
-                initialRouteName={Name.FILES}
+                initialRouteName={Name.SCHEDULE}
                 activeColor="#ffffff"
                 inactiveColor="#97A5B2"
                 barStyle={{ backgroundColor: colors.primary.dark }}
                 backBehavior={'none'}
                 shifting
-                >
+                > 
                 <Tab.Screen 
                     name={Name.FOR_YOU} 
                     component={HomeScreen}

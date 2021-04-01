@@ -1,11 +1,18 @@
 import 'react-native-gesture-handler'
 
 import * as React from 'react'
-import LoginScreen from './app/views/LoginScreen'
-import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
-import HomeScreen from './app/views/base/MainScreen/HomeScreen'
+// import LoginScreen from './app/views/first/LoginScreen'
+import InitialScreen from './app/views/base/first/Base'
+// import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
+// import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
+import { Button } from 'react-native-elements'
 import CoreApp from './app/views/base/Base';
+import LoginScreen from './app/views/base/first/LoginScreen'
+import FillScreen  from './app/views/base/first/FillScreen'
+
+
+// console.disableYellowBox = true;
 
 export default () => {
     // const [doneLoading, setDoneLoading] = useState(false)
@@ -23,8 +30,12 @@ export default () => {
     // }
 
     return (
-        // <SplashScreen />
-        <CoreApp />
+        <>
+            {/* <InitialScreen /> */}
+        {/* <LoginScreen/> */}
+        {/* {/* <FillScreen/> */}
+            <CoreApp/> 
+        </>
     );
 }
 

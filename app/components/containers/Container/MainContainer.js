@@ -4,12 +4,12 @@
  */
 import React from 'react'
 import _BaseContainer from './_BaseContainer'
-import { View, StyleSheet, Text} from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { ATiLogoMini } from '../../vectors/logo'
 import { colors } from '../../../internals/theme'
 import { StatusBar, Button } from 'react-native'
 
-import { Avatar, TouchableRipple } from 'react-native-paper'
+import { Avatar} from 'react-native-paper'
 
 import { DrawerActions, NavigationHelpersContext, useNavigation } from '@react-navigation/native'
 // import { useNavigation } from '@react-navigation/drawer'
@@ -27,11 +27,7 @@ export const viewStyles = StyleSheet.create({
     }
 })
 
-
-
-
-
-export default function MainContainer ({style, children}) {
+export default function MainContainer ({style, children, hide}) {
     const navigation = useNavigation();
 
     return (
@@ -42,28 +38,32 @@ export default function MainContainer ({style, children}) {
                     backgroundColor={colors.primary.dark} />
             )}  
             containerStyle={styles.containerStyle}>
-            <View style={{ flexGrow: 0.04, flexDirection: 'row', alignItems: 'center', position: 'relative', ...viewStyles.padded }}>
+            <View style={{ flexGrow: 0.04, flexDirection: 'row', justifyContent:'center', alignItems: 'center', position: 'relative', ...viewStyles.padded }}>
                 <ATiLogoMini width={40} height={40} />
 
-                <TouchableRipple
+                <TouchableOpacity
                     onPress={() => navigation.openDrawer()
                     } 
                     style={{ position: 'absolute', right: 16,}}
-                    rippleColor='#ffffff'
+                    
                     // borderless={true}
                 >
-                    <Avatar.Image
-                            source = {{
-                                uri: 'https://lh6.ggpht.com/_NNjxeW9ewEc/TMQbkhyTs7I/AAAAAAAAOPk/ARL6qcIjQR8/tmpAF14_thumb_thumb1.jpg?imgmax=800'
-                            }}
-                            size={56}
-                        />
-                </TouchableRipple>
+                <Avatar.Image
+                        source = {{
+                            uri: 'https://lh6.ggpht.com/_NNjxeW9ewEc/TMQbkhyTs7I/AAAAAAAAOPk/ARL6qcIjQR8/tmpAF14_thumb_thumb1.jpg?imgmax=800'
+                        }}
+                        size={56}
+                    />
+                </TouchableOpacity>
             </View>
 
             <View style={{ flex: 1, position:'relative', width: '100%', ...style}}>
                 {children}
-                <View style={{position:'absolute', width: '100%',height:'36%', backgroundColor:'#8DACC9', zIndex:-10, bottom:0}}/>
+                {
+                    !hide ? <View style={{position:'absolute', width: '100%',height:'36%', backgroundColor:'#8DACC9', zIndex:-10, bottom:0}}/>: null
+                    
+                }
+                
             </View>
             
         </_BaseContainer>

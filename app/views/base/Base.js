@@ -4,6 +4,7 @@ import MainScreen from './MainScreen'
 import UniversityScreen from './UniversityScreen'
 import SubjectScreen from './SubjectScreen'
 
+
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerContent from './DrawerContent'
@@ -11,11 +12,12 @@ import { Font, FontStyle } from '../../internals/theme/fonts'
 
 const Drawer = createDrawerNavigator();
 
+
 export default () =>{
     return (
     <NavigationContainer>
         <Drawer.Navigator 
-        initialRouteName="Home" 
+        initialRouteName='Home' 
         drawerPosition='right'
         backBehavior='firstRoute'
         // drawerType='slide'
@@ -29,7 +31,7 @@ export default () =>{
             activeTintColor: '#000',
             inactiveTintColor: '#FFF',
             style: {flex: 1},
-            itemStyle: { width:'100%', borderTopLeftRadius:100, borderBottomLeftRadius:100, paddingLeft:16, },
+            itemStyle: { width:'100%', borderTopLeftRadius:100, borderBottomLeftRadius:100, paddingLeft:16,},
             labelStyle: {
                 ...FontStyle.bold
                 
@@ -39,10 +41,10 @@ export default () =>{
         lazy>
             
             <Drawer.Screen name="Home" component={MainScreen} />
-            <Drawer.Screen name="University" component={UniversityScreen} />
-            <Drawer.Screen name="Subjects" component={SubjectScreen} />
+            <Drawer.Screen name="University Exams" component={UniversityScreen} />
+            <Drawer.Screen name="My Subjects" component={SubjectScreen} />
             <Drawer.Screen name="About" component={AboutScreen} />
         </Drawer.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
     );
 }
