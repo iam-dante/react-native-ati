@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View,Text,TouchableOpacity,ScrollView,StatusBar } from 'react-native'
+import { View,Text,TouchableOpacity,ScrollView,StatusBar} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
-
-import MainContainer from '../../../components/containers/Container/MainContainer'
+import { Button } from 'react-native-elements'
 import Svg, { Path } from "react-native-svg"
-import { set } from 'react-native-reanimated'
+
 
 
 
@@ -75,16 +74,15 @@ export default function FillScreen(){
     University drop down
 */}
 
-                <Text style={{...Font.baseStyle, color:'#FFFFFF'}}>UNIVERSITY</Text>
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>UNIVERSITY</Text>
                 <TouchableOpacity 
                     onPress={()=> setState(!hide)}
                 >
-
-                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6 }}>
+                    <View style={ hide  ? {position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center'}:{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center', borderWidth:2 , borderColor: '#253B51'}}>
                         <Text style={{...Font.baseStyle}}>{stateUni}</Text>
                         {
                             hide ?
-                            <DropArrow style ={{ position: 'absolute', right: 24, bottom:24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24, bottom:24}}/>
+                            <DropArrow style ={{ position: 'absolute', right: 24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
                         }
                     </View>
                 </TouchableOpacity>
@@ -120,16 +118,16 @@ export default function FillScreen(){
 */}
             <View style={{marginLeft:16, marginRight:16, marginTop:8}}>
 
-                <Text style={{...Font.baseStyle, color:'#FFFFFF'}}>COURSE</Text>
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>COURSE</Text>
                 <TouchableOpacity 
                     onPress={()=> setStateCourse(!hidecosure)}
                 >
 
-                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6 }}>
+                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center' }}>
                         <Text style={{...Font.baseStyle}}>{cousre}</Text>
                         {
                             hidecosure ?
-                            <DropArrow style ={{ position: 'absolute', right: 24, bottom:24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24, bottom:24}}/>
+                            <DropArrow style ={{ position: 'absolute', right: 24,}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
                         }
                     </View>
                 </TouchableOpacity>
@@ -147,7 +145,7 @@ export default function FillScreen(){
                                         }}
                                     >
                                         <Text>
-                                            Bachelor in Computer Engering
+                                            Bachelor in Telecommication 
                                         </Text>
                                         
                                     </TouchableOpacity>
@@ -166,16 +164,16 @@ export default function FillScreen(){
 */}
             <View style={{ marginLeft:16, marginRight:16, marginTop:8}}>
 
-                <Text style={{...Font.baseStyle, color:'#FFFFFF'}}>YEAR</Text>
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>YEAR</Text>
                 <TouchableOpacity 
                     onPress={()=> setStateYear(!hideYear)}
                 >
 
-                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6 }}>
+                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center',}}>
                         <Text style={{...Font.baseStyle}}>{year}</Text>
                         {
                             hideYear ?
-                            <DropArrow style ={{ position: 'absolute', right: 24, bottom:24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24, bottom:24}}/>
+                            <DropArrow style ={{ position: 'absolute', right: 24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
                         }
                     </View>
                 </TouchableOpacity>
@@ -202,6 +200,16 @@ export default function FillScreen(){
                             </View>
                         }
                     </View>
+            </View>
+            <View style={{marginTop: 12, position:'relative', width: '100%'}}>
+                <View style={{position:'absolute', right: 24}}>
+            <Button
+                title="SUBMIT"
+                buttonStyle={{backgroundColor: '#253B51', padding: 12}}
+                titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
+                onPress={()=>{console.log("Clicked")}}
+            />
+                </View>
             </View>
         </View>
         </>
