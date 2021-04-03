@@ -88,11 +88,13 @@ export default function FillScreen(){
                         }
                     </View>
                 </TouchableOpacity>
+                        <View style={{position:'relative'}}>
+                            
                         { 
                             hide ?
                             null:
                             
-                            <View style={{width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2}}>
+                            <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
                                 <ScrollView>
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
@@ -109,6 +111,7 @@ export default function FillScreen(){
                                 </ScrollView>
                             </View>
                         }
+                        </View>
             </View>
 
 
@@ -130,11 +133,12 @@ export default function FillScreen(){
                         }
                     </View>
                 </TouchableOpacity>
+                    <View style={{position:'relative'}}>
                         { 
                             hidecosure ?
                             null:
                             
-                            <View style={{width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2}}>
+                            <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
@@ -151,6 +155,7 @@ export default function FillScreen(){
                                 </ScrollView>
                             </View>
                         }
+                    </View>
             </View>
 
 
@@ -174,11 +179,12 @@ export default function FillScreen(){
                         }
                     </View>
                 </TouchableOpacity>
+                    <View style={{position: 'relative'}}>
                         { 
                             hideYear ?
                             null:
                             
-                            <View style={{width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2}}>
+                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
@@ -195,6 +201,7 @@ export default function FillScreen(){
                                 </ScrollView>
                             </View>
                         }
+                    </View>
             </View>
         </View>
         </>
