@@ -2,14 +2,15 @@ import 'react-native-gesture-handler'
 
 import * as React from 'react'
 // import LoginScreen from './app/views/first/LoginScreen'
+// import Base from './app/views/base/first/LoginScreen'
+
 import InitialScreen from './app/views/base/first/Base'
 // import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
 // import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
-import { Button } from 'react-native-elements'
-import CoreApp from './app/views/base/Base';
+// import CoreApp from './app/views/base/Base';
 import LoginScreen from './app/views/base/first/LoginScreen'
-import FillScreen  from './app/views/base/first/FillScreen'
+// import FillScreen  from './app/views/base/first/FillScreen'
 
 
 // console.disableYellowBox = true;
@@ -32,7 +33,8 @@ export default () => {
     return (
         <>
             {/* <InitialScreen /> */}
-            <LoginScreen/> 
+            <LoginScreen/>
+            {/* <Base/>  */}
             {/* <FillScreen/> */}
             {/* <CoreApp/>  */}
         </>

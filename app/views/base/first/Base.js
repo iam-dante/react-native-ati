@@ -7,6 +7,7 @@ import LoginScreen from './LoginScreen'
 const Stack = createStackNavigator();
 
 export default () => {
+
     return (
         <NavigationContainer>
             <Stack.Navigator 
