@@ -119,7 +119,8 @@ export default function FillScreen(){
             <View style={{marginLeft:16, marginRight:16, marginTop:8}}>
 
                 <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>COURSE</Text>
-                <TouchableOpacity 
+                <TouchableOpacity
+                onBlur={()=>setState()}
                     onPress={()=> setStateCourse(!hidecosure)}
                 >
 
@@ -140,7 +141,18 @@ export default function FillScreen(){
                                 <ScrollView>
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
-                                            setCourse('Bachelor in Computer Engering')
+                                            setCourse('Bachelor in Computer Science')
+                                            setStateCourse(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            Bachelor in Computer Science
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setCourse('Bachelor in Telecommication')
                                             setStateCourse(true)
                                         }}
                                     >
@@ -149,6 +161,19 @@ export default function FillScreen(){
                                         </Text>
                                         
                                     </TouchableOpacity>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setCourse('Bachelor in Computer Engeering')
+                                            setStateCourse(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            Bachelor in Engeering 
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    
+        
                                     
                                 </ScrollView>
                             </View>
