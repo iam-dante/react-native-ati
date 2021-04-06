@@ -7,11 +7,12 @@ import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
 
 import firebase from '@react-native-firebase/app'
 import '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
+
 
 
 GoogleSignin.configure({
-  webClientId: '605670678934-dvvfpg7t0cg7td0bjqq87l7oemcpk81h.apps.googleusercontent.com',
+  webClientId: "67287288053-v9lo7e7j44ok51234896fra31smhmgdl.apps.googleusercontent.com",
 });
 
 
