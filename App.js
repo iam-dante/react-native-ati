@@ -33,8 +33,8 @@ export default () => {
         <>
             {/* <InitialScreen /> */}
         {/* <LoginScreen/> */}
-         <FillScreen/>
-            {/* <CoreApp/>  */}
+         {/* <FillScreen/> */}
+            <CoreApp/> 
         </>
     );
 }
