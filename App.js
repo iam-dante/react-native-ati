@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 
 import * as React from 'react'
 // import LoginScreen from './app/views/first/LoginScreen'
-import Base from './app/views/base/first/LoginScreen'
+import Base from './app/views/base/first/Base'
 
 // import InitialScreen from './app/views/base/first/Base'
 // import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'

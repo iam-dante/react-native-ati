@@ -10,10 +10,8 @@ export default () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator 
-                headerMode="none"
-
-            >
+            <Stack.Navigator
+                headerMode="none">
                 <Stack.Screen name='login' component={LoginScreen}/>
                 <Stack.Screen name='option' component={FillScreen}/>
             </Stack.Navigator>
