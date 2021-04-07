@@ -3,10 +3,10 @@ import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
-// import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
 import firebase from '@react-native-firebase/app'
-import '@react-native-firebase/auth';
+import auth from'@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
 
@@ -16,26 +16,8 @@ GoogleSignin.configure({
 });
 
 
-async function onGoogleButtonPress() {
 
-   try{
-      console.log("HERE!!")
-    
-      //  Get the users  ID token
-      const  { idToken } = await GoogleSignin.signIn();
 
-      console.log("Id:", idToken)
-      
-      // Create a Google credential with the token
-      const googleCredential =  firebase.auth.GoogleAuthProvider.credential(idToken);
-      
-      //  // Sign-in the user with the credential
-      return firebase.auth().signInWithCredential(googleCredential);
-    }catch(e){
-      console.log(e)
-   }
-  
-}
 
 
 const IntroSection = ({ style }) => {
@@ -105,13 +87,59 @@ const GoogleSignInButton = ({ onPress }) => {
 
 const LoginSection = ({ style }) => {
   // const navigation = useNavigation();
+  const [userInfo, setUserInfo] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  async function onGoogleButtonPress() {
+  
+     try{
+        console.log("HERE!!")
+      
+        //  Get the users  ID token
+        const  userInfo = await GoogleSignin.signIn();
+        setUserInfo(userInfo);
+        setIsLoggedIn(true)
+        console.log(userInfo.user.email)
+        console.log(userInfo)
+  
+        
+        // Create a Google credential with the token
+        const googleCredential =  firebase.auth.GoogleAuthProvider.credential(userInfo.idToken);
+        
+        //  // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+      }catch(e){
+        console.log(e)
+     }
+    
+  }
+  
+  signOut = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await auth().signOut();
+      setIsLoggedIn(false);
+      console.log(isLoggedIn)
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
             <GoogleSignInButton 
-              onPress={() => onGoogleButtonPress()
-                // navigation.navigate('option ')
+              onPress={() => onGoogleButtonPress().then(()=>{console.log("Done siging")})
+                
+                // navigation.navigate('option')
               }/>
+              
+              <Button
+              onPress={()=> signOut()}
+              title="Sign Out"
+              
+              />
+
             {/* SubText */}
             <Text style={{ fontSize: 11, color: '#9E9A9A', marginVertical: 5, fontFamily: 'DMSans-Italic'}}>Exclusive to invited members only.</Text>
         </View>
@@ -123,30 +151,15 @@ const LoginSection = ({ style }) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 export default function () {
-
-
-
   
   return (
       <>
-      <StatusBar backgroundColor='#000000' />
-      <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
-          <LoginSection style={{ flexGrow: 0.2 }}/>
-          
-      </SafeAreaView>
+        <StatusBar backgroundColor='#000000' />
+        <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
+            <LoginSection style={{ flexGrow: 0.2 }} />
+        </SafeAreaView>
       </>
     )
 }

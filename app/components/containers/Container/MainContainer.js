@@ -11,7 +11,7 @@ import { StatusBar, Button } from 'react-native'
 
 import { Avatar} from 'react-native-paper'
 
-import { DrawerActions, NavigationHelpersContext, useNavigation } from '@react-navigation/native'
+import {useNavigation } from '@react-navigation/native'
 // import { useNavigation } from '@react-navigation/drawer'
 
 const styles = StyleSheet.create({
@@ -61,7 +61,6 @@ export default function MainContainer ({style, children, hide}) {
                 {children}
                 {
                     !hide ? <View style={{position:'absolute', width: '100%',height:'36%', backgroundColor:'#8DACC9', zIndex:-10, bottom:0}}/>: null
-                    
                 }
                 
             </View>
