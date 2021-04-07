@@ -8,7 +8,7 @@ import Base from './app/views/base/first/Base'
 // import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
 // import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
-// import CoreApp from './app/views/base/Base';
+import CoreApp from './app/views/base/Base';
 // import LoginScreen from './app/views/base/first/LoginScreen'
 // import FillScreen  from './app/views/base/first/FillScreen'
 

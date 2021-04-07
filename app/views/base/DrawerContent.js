@@ -14,8 +14,11 @@ import{
     Drawer,
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
+import { signOut } from './FirebaseConfig';
 // import { Font, FontStyle } from '../../../internals/theme/fonts'
 // import { DrawerActions, NavigationContext, NavigationHelpersContext, useNavigation } from '@react-navigation/native'
+
+
 
 export default function DrawerContent(props){
     return(
@@ -49,7 +52,7 @@ export default function DrawerContent(props){
                     label={() => <Text style={{ ...Font.baseStyle, color: '#FFF'}}>Log out</Text>}
                     labelStyle={{color:'#FF0000', color:''}}
                     style={{ width: '100%', paddingHorizontal: 16}}
-                    onPress={() => {props.navigation.navigate('University')}}
+                    onPress={() =>  signOut()}
                     />
             </Drawer.Section>
         </DrawerContentScrollView>

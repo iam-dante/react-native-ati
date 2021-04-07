@@ -8,10 +8,11 @@ import { View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { ATiLogoMini } from '../../vectors/logo'
 import { colors } from '../../../internals/theme'
 import { StatusBar, Button } from 'react-native'
-
 import { Avatar} from 'react-native-paper'
 
-import {useNavigation } from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native'
+
+
 // import { useNavigation } from '@react-navigation/drawer'
 
 const styles = StyleSheet.create({
@@ -42,7 +43,7 @@ export default function MainContainer ({style, children, hide}) {
                 <ATiLogoMini width={40} height={40} />
 
                 <TouchableOpacity
-                    onPress={() => navigation.openDrawer()
+                    onPress={() => {navigation.openDrawer()}
                     } 
                     style={{ position: 'absolute', right: 16,}}
                     

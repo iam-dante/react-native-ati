@@ -232,3 +232,46 @@ export function InfoIcon(props) {
     </Svg>
   )
 }
+
+
+export function DropArrow(props) {
+  return (
+    <Svg
+      width={12}
+      height={8}
+      viewBox="0 0 12 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M11 1L6 6.25 1 1"
+        stroke="#304B65"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  )
+}
+
+export function OppsiteDropArrow(props) {
+    return (
+      <Svg
+        width={12}
+        height={8}
+        viewBox="0 0 12 8"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <Path
+          d="M1 6.25L6 1l5 5.25"
+          stroke="#304B65"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </Svg>
+    )
+  }

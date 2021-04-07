@@ -46,3 +46,7 @@ export async function onGoogleButtonPress() {
  };
 
 
+ export async function userInfo(){
+     return  userInfo = await GoogleSignin.signInSilently();
+ }
+
