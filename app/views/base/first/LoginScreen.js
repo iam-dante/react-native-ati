@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
 import { useNavigation } from '@react-navigation/native'
-import {onGoogleButtonPress} from '../FirebaseConfig'
+import {AuthContext} from '../FirebaseConfig'
+
 
 
 const IntroSection = ({ style }) => {
@@ -74,13 +75,15 @@ const GoogleSignInButton = ({ onPress }) => {
 
 const LoginSection = ({ style }) => {
   const navigation = useNavigation();
+  const {loginGoogle} = useContext(AuthContext)
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
-            <GoogleSignInButton 
-              onPress={() => onGoogleButtonPress().then(( ) => {navigation.navigate('option')})
-              }/>
+            <GoogleSignInButton onPress={() =>loginGoogle().then(()=>{navigation.navigate('option')})}
+              />
+
+            
               
             {/* SubText */}
             <Text style={{ fontSize: 11, color: '#9E9A9A', marginVertical: 5, fontFamily: 'DMSans-Italic'}}>Exclusive to invited members only.</Text>

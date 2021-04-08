@@ -35,7 +35,7 @@ export default () =>{
             labelStyle: {
                 ...FontStyle.bold
                 
-            },
+            }, 
         }}
         gestureEnabled
         lazy>

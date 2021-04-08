@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import { View,Text,TouchableOpacity,ScrollView,StatusBar} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
 import {useNavigation} from '@react-navigation/native'
+import { AuthContext } from '../FirebaseConfig'
 
 
 
@@ -18,7 +19,18 @@ export default function FillScreen(){
     const [hideYear, setStateYear] = useState(true)
     const [year, setYear] = useState('First')
 
-    const navigation =useNavigation();
+    const {setstate,setUser} = useContext(AuthContext)
+
+    // const  onAuthStateChanged =(user) => {
+    //     setUser(user);
+    //     if (state) setstate(false);
+    //   }
+
+    // useEffect(() => {
+    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //     return subscriber; // unsubscribe on unmount
+        
+    // }, []);
 
     return(
         <>
@@ -192,7 +204,7 @@ export default function FillScreen(){
                 title="SUBMIT"
                 buttonStyle={{backgroundColor: '#253B51', padding: 12}}
                 titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
-                onPress={()=> navigation.navigate("mainscreen")}
+                onPress={()=> setstate(true)}
             />
                 </View>
             </View>

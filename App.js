@@ -1,42 +1,54 @@
 import 'react-native-gesture-handler'
 
-import * as React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 // import LoginScreen from './app/views/first/LoginScreen'
 import Base from './app/views/base/first/Base'
-
 // import InitialScreen from './app/views/base/first/Base'
 // import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
 // import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
 import CoreApp from './app/views/base/Base';
-// import LoginScreen from './app/views/base/first/LoginScreen'
-// import FillScreen  from './app/views/base/first/FillScreen'
+import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
+import auth from '@react-native-firebase/auth';
 
 
 // console.disableYellowBox = true;
 
-export default () => {
-    // const [doneLoading, setDoneLoading] = useState(false)
+const App = () => {
+    
+    SplashScreen.hide()
 
-    // useEffect(() => {
-    //     const abc = setTimeout(() => {
-    //         setDoneLoading(true)
-    //     }, 2000)
+    const {user, setUser, state, setstate} = useContext(AuthContext)
+    
+    const  onAuthStateChanged =(user) => {
+        setUser(user);
+        if (state) setstate(false);
+      }
 
-    //     return clearTimeout(abc)
-    // }, [])
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+        
+    }, []);
 
-    // if (doneLoading) {
-        SplashScreen.hide()
-    // }
+    // if ( !state )return null;
 
     return (
         <>
             {/* <InitialScreen /> */}
-            <Base/> 
+
+
+            {
+                (user) ? <CoreApp/> :  <Base/> 
+            }
+
             {/* <FillScreen/> */}
-            {/* <CoreApp/>  */}
         </>
     );
 }
 
+export default () => (
+    <Auth>
+        <App />
+    </Auth>
+)

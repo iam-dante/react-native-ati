@@ -2,7 +2,7 @@
  * This is the main container that is used
  * across all or most screens in the apps
  */
-import React from 'react'
+import React, { useContext } from 'react'
 import _BaseContainer from './_BaseContainer'
 import { View, StyleSheet, Text, TouchableOpacity} from 'react-native'
 import { ATiLogoMini } from '../../vectors/logo'
@@ -11,6 +11,8 @@ import { StatusBar, Button } from 'react-native'
 import { Avatar} from 'react-native-paper'
 
 import {useNavigation} from '@react-navigation/native'
+import { AuthContext } from '../../../views/base/FirebaseConfig'
+
 
 
 // import { useNavigation } from '@react-navigation/drawer'
@@ -30,6 +32,7 @@ export const viewStyles = StyleSheet.create({
 
 export default function MainContainer ({style, children, hide}) {
     const navigation = useNavigation();
+    const {user} = useContext(AuthContext)
 
     return (
         <_BaseContainer 
@@ -43,7 +46,8 @@ export default function MainContainer ({style, children, hide}) {
                 <ATiLogoMini width={40} height={40} />
 
                 <TouchableOpacity
-                    onPress={() => {navigation.openDrawer()}
+                    onPress={() => navigation.openDrawer()
+                        
                     } 
                     style={{ position: 'absolute', right: 16,}}
                     
@@ -51,7 +55,7 @@ export default function MainContainer ({style, children, hide}) {
                 >
                 <Avatar.Image
                         source = {{
-                            uri: 'https://lh6.ggpht.com/_NNjxeW9ewEc/TMQbkhyTs7I/AAAAAAAAOPk/ARL6qcIjQR8/tmpAF14_thumb_thumb1.jpg?imgmax=800'
+                            uri: user.photoURL
                         }}
                         size={56}
                     />
