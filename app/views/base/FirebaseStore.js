@@ -32,6 +32,8 @@ const FirebaseStore = () =>{
         }, []);
 
 
+        
+
     //    const add = async () =>{
     //         firestore().collection('user').add(
     //             {name: 'Joseline', age: 30,}
