@@ -17,7 +17,7 @@ import LoginScreen from './app/views/base/first/LoginScreen'
 // console.disableYellowBox = true;
 
 const App = () => {
-    
+    SplashScreen.hide()
     const {ready, user,setUser, state} = useContext(AuthContext)
     
     const  onAuthStateChanged =(user) => {
@@ -40,7 +40,7 @@ const App = () => {
     //     return <LoginScreen />
     // }
 
-    return <FillScreen/>
+    return <FirebaseStore/>
 }
 
 export default () => (
