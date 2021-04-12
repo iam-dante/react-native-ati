@@ -30,9 +30,7 @@ const FirebaseStore = () =>{
             // Stop listening for updates when no longer required
             return () => subscriber();
         }, []);
-
-
-        
+ 
 
     //    const add = async () =>{
     //         firestore().collection('user').add(
