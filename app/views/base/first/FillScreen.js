@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import { View,Text,TouchableOpacity,ScrollView,StatusBar} from 'react-native'
+import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
-import {useNavigation} from '@react-navigation/native'
 import { AuthContext } from '../FirebaseConfig'
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -19,18 +19,13 @@ export default function FillScreen(){
     const [hideYear, setStateYear] = useState(true)
     const [year, setYear] = useState('First')
 
-    const {setstate,setUser} = useContext(AuthContext)
 
-    // const  onAuthStateChanged =(user) => {
-    //     setUser(user);
-    //     if (state) setstate(false);
-    //   }
+    const {setRegister} = useContext(AuthContext)
 
-    // useEffect(() => {
-    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    //     return subscriber; // unsubscribe on unmount
-        
-    // }, []);
+
+
+
+
 
     return(
         <>
@@ -66,6 +61,7 @@ export default function FillScreen(){
                             
                             <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
                                 <ScrollView>
+                                    
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
                                             setUni('Institute of Finance and Management')
@@ -183,6 +179,17 @@ export default function FillScreen(){
                                 <ScrollView>
                                     <TouchableOpacity style={{padding:16}} 
                                         onPress={()=>{
+                                            setYear('First')
+                                            setStateYear(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            First
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
                                             setYear('Second')
                                             setStateYear(true)
                                         }}
@@ -204,7 +211,7 @@ export default function FillScreen(){
                 title="SUBMIT"
                 buttonStyle={{backgroundColor: '#253B51', padding: 12}}
                 titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
-                onPress={()=> setstate(true)}
+                onPress={()=> setRegister(true)}
             />
                 </View>
             </View>
@@ -213,3 +220,5 @@ export default function FillScreen(){
     
     )
 }
+
+ 

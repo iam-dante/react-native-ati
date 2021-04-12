@@ -57,6 +57,7 @@ export default function DrawerContent(props){
                     style={{ width: '100%', paddingHorizontal: 16}}
                     onPress={() => {
                         signOut()
+                        setstate(false)
                         setUser('')
                     }
                     }

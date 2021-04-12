@@ -3,7 +3,6 @@ import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
-import { useNavigation } from '@react-navigation/native'
 import {AuthContext} from '../FirebaseConfig'
 
 
@@ -74,14 +73,12 @@ const GoogleSignInButton = ({ onPress }) => {
 }
 
 const LoginSection = ({ style }) => {
-  const navigation = useNavigation();
   const {loginGoogle} = useContext(AuthContext)
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
-            <GoogleSignInButton onPress={() =>loginGoogle().then(()=>{navigation.navigate('option')})}
-              />
+            <GoogleSignInButton onPress={() =>loginGoogle()} />
 
             
               

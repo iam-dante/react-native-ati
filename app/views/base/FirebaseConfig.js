@@ -1,7 +1,8 @@
 import firebase from '@react-native-firebase/app'
 import auth from'@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useReducer, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const AuthContext = createContext();
 
@@ -10,22 +11,71 @@ GoogleSignin.configure({
   offlineAccess: false
 });
 
+// const initialData = {
+//   user: undefined, // { name, photo }
+//   isRegistered: false,
+//   isSomething: false
+// }
+
+/**
+ * Stores data to store
+ */
+export const storeData = async (key, vl) =>{
+  try{
+      const value = JSON.stringify(vl)
+      await AsyncStorage.setItem(key, value);
+  }
+  catch(e) {
+    console.log(e)
+    throw e
+  }
+}
+
+/**
+ * Loads data from store
+ */
+const getData = async (key) =>{
+  try{
+    const value =  await AsyncStorage.getItem(key)
+    return JSON.parse(value)
+  }
+  catch(e){
+    console.log(e)
+    throw e
+  }
+}
+
+
 export const Auth = ({children}) => {
-  const [user, setUser] = useState({})
-  const[state, setstate] = useState(false)
+  // Ready State
+  const [ready, set] = useState(false)
+  const [user, setUser] = useState(null)
+  const [registered, register] = useState(false)
+
+  useEffect( () => {
+    getData('user@register')
+      .then(v => register(v))
+      .then(() => set(true))
+
+  },[])
+
 
   return (
     <AuthContext.Provider
   
       value={{
-        
+          ready,
           user,
-          state,
-          setstate,
+          state: registered,
+          setstate: register,
           setUser,
+          setRegister: (val) => {
+            register(val)
+            storeData('user@register', val)
+          },
           loginGoogle: async function onGoogleButtonPress() {
             try{
-              console.log("HERE!!")
+              console.log("Sign in")
               await GoogleSignin.hasPlayServices();
             
               //  Get the users  ID token
@@ -33,7 +83,6 @@ export const Auth = ({children}) => {
               // setUser(userInfo)
               // setstate(true)
               
-        
               // Create a Google credential with the token
               const googleCredential =  firebase.auth.GoogleAuthProvider.credential(userInfo.idToken, userInfo.accessToken);
               
