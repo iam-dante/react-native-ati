@@ -5,26 +5,78 @@ import { Font, FontStyle } from '../../../internals/theme/fonts'
 import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
 import { AuthContext } from '../FirebaseConfig'
+import firestore from '@react-native-firebase/firestore'
 
 
 
 
 export default function FillScreen(){
+
+    //The state that save the changes from the firbase
+    const [data, uniData] = useState([])
+    const [cs, coursesData] = useState([])
+    const [ys, yearData] = useState([])
+
+
+    //State that handles the changes on the UI
     const [hide, setState] = useState(true)
-    const [stateUni, setUni] = useState("University of Dar es salaam")
+    const [stateUni, setUni] = useState()
 
     const [hideCosure, setStateCourse] = useState(true)
-    const [cousre, setCourse] = useState("Bachelor in Computer Science")
+    const [cousre, setCourse] = useState()
 
     const [hideYear, setStateYear] = useState(true)
-    const [year, setYear] = useState('First')
+    const [year, setYear] = useState()
 
 
+    //Context Provider of setRegister
     const {setRegister} = useContext(AuthContext)
 
 
 
+    useEffect(() => {
+        const university = firestore()
+          .collection('university')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().name
+                //   console.log(name)
+                  uniData(name)
+                  setUni(name[0])
+              })
+              
+          });
+          const courses = firestore()
+          .collection('courses')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().name
+                  coursesData(name)
+                  setCourse(name[0])
+              })
+              
+          });
 
+          const years = firestore()
+          .collection('years')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().yearname
+                  yearData(name)
+                  setYear(name[0])
+              })
+              
+          });
+          // Stop listening for updates when no longer required
+          return () => {
+            university()
+            courses()
+            years()
+            };
+      }, []);
 
 
     return(
@@ -61,18 +113,20 @@ export default function FillScreen(){
                             
                             <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
                                 <ScrollView>
-                                    
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setUni('Institute of Finance and Management')
-                                            setState(true)
-                                        }}
-                                    >
-                                        <Text>
-                                        Institute of Finance and Management
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
+                                
+                                    {
+                                        data.map((vl,ix) =>(
+                                            <TouchableOpacity key={ix} style={{padding:16}} 
+                                                onPress={()=>{
+                                                    setUni(vl)
+                                                    setState(true)
+                                                }}
+                                            >
+                                                <Text>{vl}</Text>
+                                                
+                                            </TouchableOpacity>
+                                        ))
+                                    }
                                     
                                 </ScrollView>
                             </View>
@@ -107,42 +161,20 @@ export default function FillScreen(){
                             
                             <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setCourse('Bachelor in Computer Science')
-                                            setStateCourse(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            Bachelor in Computer Science
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setCourse('Bachelor in Telecommication')
-                                            setStateCourse(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            Bachelor in Telecommication 
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setCourse('Bachelor in Computer Engeering')
-                                            setStateCourse(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            Bachelor in Engeering 
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
-                                    
-        
-                                    
+                                {
+                                        cs.map((vl,ix) =>(
+                                            <TouchableOpacity key={ix} style={{padding:16}} 
+                                                onPress={()=>{
+                                                    setCourse(vl)
+                                                    setStateCourse(true)
+                                                }}
+                                            >
+                                                <Text>{vl}</Text>
+                                                
+                                            </TouchableOpacity>
+                                        ))
+                                    }
+
                                 </ScrollView>
                             </View>
                         }
@@ -175,30 +207,23 @@ export default function FillScreen(){
                             hideYear ?
                             null:
                             
-                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setYear('First')
-                                            setStateYear(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            First
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setYear('Second')
-                                            setStateYear(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            Second
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
+                                    
+                            {
+                                    ys.map((vl,ix) =>(
+                                        <TouchableOpacity key={ix} style={{padding:16}} 
+                                            onPress={()=>{
+                                                setYear(vl)
+                                                setStateYear(true)
+                                            }}
+                                        >
+                                            <Text>{vl}</Text>
+                                            
+                                        </TouchableOpacity>
+                                    ))
+                            } 
+                                    
                                     
                                 </ScrollView>
                             </View>

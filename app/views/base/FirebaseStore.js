@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore'
 
 const FirebaseStore = () =>{
     const [data, setData] = useState([])
-    var Uni = []
+    
 
     
 
@@ -16,34 +16,40 @@ const FirebaseStore = () =>{
     //  }
    
         useEffect(() => {
-          const subscriber = firestore()
-            .collection('university')
-            .onSnapshot(doc => {
-                // console.log(doc)
-                doc.forEach(data =>{
-                    const name = data.data().name
-                    name.forEach(vl =>  Uni.push(vl))
-                })
-                
-            });
+            const obj ={}
+            const subscriber = firestore()
+                .collection('university')
+                .onSnapshot(doc => {
+                    // console.log(doc)
+                    doc.forEach(dc =>{
+                    obj[dc.id] = dc.data().name
+                    })
+
+                    setData(obj)
+                    for(let key in obj){
+                        console.log(key)
+                    }
+                    
+                });
             
             // Stop listening for updates when no longer required
             return () => subscriber();
         }, []);
  
-
-       const add = async () =>{
-            firestore().collection('user').add(
-                {name: 'Joseline', age: 30,}
-            )
-
-         }
-        
+    
     
     return(
         <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
+
+    {/* {data.map( vl => 
+    
+    // <Text style={{padding:24}}>Firebase App:{vl}</Text>
+    
+    
+    )} */}
+
+    
         
-        <Text style={{padding:24}}>Firebase App:</Text>
             
             <Button
             title="Add"

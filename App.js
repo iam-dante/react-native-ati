@@ -40,7 +40,7 @@ const App = () => {
     //     return <LoginScreen />
     // }
 
-    return <FirebaseStore/>
+    return <FillScreen/>
 }
 
 export default () => (
