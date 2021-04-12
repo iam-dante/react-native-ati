@@ -1,8 +1,10 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { ATiLogo } from './SplashScreen'
+import React, {useEffect, useState} from 'react'
+import { View, Text, StatusBar,SafeAreaView } from 'react-native'
+import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
+// import { useNavigation } from '@react-navigation/native'
+
 
 
 const IntroSection = ({ style }) => {
@@ -17,8 +19,6 @@ const IntroSection = ({ style }) => {
         </View>
     )
 }
-
-
 
 
 export function GoogleIcon(props) {
@@ -62,37 +62,55 @@ export function GoogleIcon(props) {
 
 
 
-
 const GoogleSignInButton = ({ onPress }) => {
     return (
         <Button
             onPress={onPress}
             icon={<GoogleIcon/>}
             iconRight
-            containerStyle={{backgroundColor: 'blue' }}
             buttonStyle={{ paddingHorizontal: 30, width: '80%', paddingVertical: 10, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center'}}
             titleStyle={{ fontStyle: 'normal', fontFamily: 'DMSans-Bold' }} title="Sign in with Google" />
     )
 }
 
-const LoginSection = ({ style }) => {
+const LoginSection = ({ style,   }) => {
+  // const navigation = useNavigation();
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
-            <GoogleSignInButton onPress={() => console.log('Clicked')} />
-
+            <GoogleSignInButton 
+              onPress={() => { console.log("Button was clicked") }}/>
             {/* SubText */}
             <Text style={{ fontSize: 11, color: '#9E9A9A', marginVertical: 5, fontFamily: 'DMSans-Italic'}}>Exclusive to invited members only.</Text>
         </View>
     )
 }
 
-export default () => {
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default function () {
     return (
-        <View  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}}/>
-            <LoginSection style={{ flexGrow: 0.2 }}/>
-        </View>
+      <>
+      <StatusBar backgroundColor='#000000' />
+      <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
+          <LoginSection style={{ flexGrow: 0.2 }}/>
+          {/* <Login/> */}
+      </SafeAreaView>
+      </>
     )
 }
