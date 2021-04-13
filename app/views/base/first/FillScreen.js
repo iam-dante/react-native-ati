@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
@@ -111,6 +112,119 @@ export default function FillScreen(){
                             
                             <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
                                 <ScrollView>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setUni('Institute of Finance and Management')
+                                            setState(true)
+                                        }}
+                                    >
+                                        <Text>
+                                        Institute of Finance and Management
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    
+                                </ScrollView>
+                            </View>
+                        }
+                        </View>
+            </View>
+
+
+{/* 
+    Course dropdown 
+*/}
+            <View style={{marginLeft:16, marginRight:16, marginTop:8}}>
+
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>COURSE</Text>
+                <TouchableOpacity
+                onBlur={()=>setState()}
+                    onPress={()=> setStateCourse(!hidecosure)}
+                >
+
+                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center' }}>
+                        <Text style={{...Font.baseStyle}}>{cousre}</Text>
+                        {
+                            hidecosure ?
+                            <DropArrow style ={{ position: 'absolute', right: 24,}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
+                        }
+                    </View>
+                </TouchableOpacity>
+                    <View style={{position:'relative'}}>
+                        { 
+                            hidecosure ?
+                            null:
+                            
+                            <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                                <ScrollView>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setCourse('Bachelor in Computer Science')
+                                            setStateCourse(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            Bachelor in Computer Science
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setCourse('Bachelor in Telecommication')
+                                            setStateCourse(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            Bachelor in Telecommication 
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{padding:16}} 
+                                        onPress={()=>{
+                                            setCourse('Bachelor in Computer Engeering')
+                                            setStateCourse(true)
+                                        }}
+                                    >
+                                        <Text>
+                                            Bachelor in Engeering 
+                                        </Text>
+                                        
+                                    </TouchableOpacity>
+                                    
+        
+                                    
+                                </ScrollView>
+                            </View>
+                        }
+                    </View>
+            </View>
+
+
+
+
+{/* 
+    The Year dropdown 
+*/}
+            <View style={{ marginLeft:16, marginRight:16, marginTop:8}}>
+
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>YEAR</Text>
+                <TouchableOpacity 
+                    onPress={()=> setStateYear(!hideYear)}
+                >
+
+                    <View style={{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center',}}>
+                        <Text style={{...Font.baseStyle}}>{year}</Text>
+                        {
+                            hideYear ?
+
+                        <View style={{position:'relative'}}>
+                            
+                        { 
+                            hide ?
+                            null:
+                            
+                            <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
+                                <ScrollView>
                                 
                                     {
                                         data.map((vl,ix) =>(
@@ -125,10 +239,8 @@ export default function FillScreen(){
                                             </TouchableOpacity>
                                         ))
                                     }
-                                    
-                                </ScrollView>
-                            </View>
-                        }
+
+ 
                         </View>
             </View>
 
@@ -228,13 +340,16 @@ export default function FillScreen(){
                         }
                     </View>
             </View>
+
             <View style={{marginTop: 12, position:'relative', width: '100%'}}>
                 <View style={{position:'absolute', right: 24}}>
             <Button
                 title="SUBMIT"
                 buttonStyle={{backgroundColor: '#253B51', padding: 12}}
                 titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
+
                 onPress={()=> setRegister(true)}
+
             />
                 </View>
             </View>

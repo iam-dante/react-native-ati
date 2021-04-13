@@ -1,9 +1,13 @@
+
 import React, {useContext, useEffect, useState} from 'react'
+import React from 'react'
 import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import {GoogleIcon} from '../../../components/vectors/icons'
+
 import {AuthContext} from '../FirebaseConfig'
+
 
 const IntroSection = ({ style }) => {
     return (

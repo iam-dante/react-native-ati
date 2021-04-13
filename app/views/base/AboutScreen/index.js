@@ -1,24 +1,21 @@
-/**
- * This is the Home Screen
+/*
+ * The about screen that holds more link of information about the app
  */
+
+
 import React from 'react'
 import { StyleSheet, View, Text,ScrollView, Linking, Share } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { ShareIcon, BugIcon, StarIcon, InstagramIcon, TwitterIcon,DribbleIcon, TelegramIcon, InfoIcon, AtIcon} from '../../../components/vectors/icons'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    }
-})
+
 
 function AboutScreen () {
     return (
-        <MainContainer style={styles.container} hide>
+        <MainContainer style={{justifyContent: 'flex-start',alignItems: 'center'}} hide>
+
             <View style={{width: '100%' }}>
                 <Text style={{ ...Font.displayStyle, color:'#FFFFFF', padding:16}}>About</Text>
             </View>
@@ -28,6 +25,7 @@ function AboutScreen () {
                 alwaysBounceVertical
                 style={{width:'100%', padding:16,}}
             >
+
 {/* Support Development  */}
             <View style={{borderRadius:10, width:'100%', borderColor:'#FFFFFF', borderWidth: 1, marginBottom: 24}}>
                 <Text style={{color:'#FFFFFF', padding:16, ...Font.baseStyle, fontSize:14}}>SUPPORT DEVELOPMENT</Text>
@@ -43,13 +41,14 @@ function AboutScreen () {
                         )
                     }}
                 >
-                <View style={{flexDirection:'row', width: '100%', padding: 16, alignItems:'center'}}>
-                    <ShareIcon width={24} height={24}/>
-                    <View style={{paddingLeft:24}}>
-                        <Text style={{fontSize: 20, color: '#FFFFFF', ...Font.baseStyle}}>Share</Text>
-                        <Text style={{color:'#FFFFFF'}}>Share the app with your friends</Text>
+                    <View style={{flexDirection:'row', width: '100%', padding: 16, alignItems:'center'}}>
+                        <ShareIcon width={24} height={24}/>
+                        <View style={{paddingLeft:24}}>
+                            <Text style={{fontSize: 20, color: '#FFFFFF', ...Font.baseStyle}}>Share</Text>
+                            <Text style={{color:'#FFFFFF'}}>Share the app with your friends</Text>
+                        </View>
                     </View>
-                </View>
+
                 </TouchableOpacity>
 
                 <View style={{flexDirection:'row', width: '100%', padding: 16, alignItems:'center'}}>
@@ -68,7 +67,9 @@ function AboutScreen () {
                     </View>
                 </View>
             </View>
+
 {/* Social  */}
+
             <View style={{borderRadius:10, width:'100%', borderColor:'#FFFFFF', borderWidth: 1, marginBottom:24}}>
                 <Text style={{color:'#FFFFFF', padding:16, ...Font.baseStyle, fontSize:14}}>SOCIAL</Text>
 
@@ -112,6 +113,7 @@ function AboutScreen () {
             </View>
 
 {/* OTHER */}
+
             <View style={{borderRadius:10, width:'100%', borderColor:'#FFFFFF', borderWidth: 1, marginBottom: 24}}>
                 <Text style={{color:'#FFFFFF', padding:16, ...Font.baseStyle, fontSize:14}}>OTHER</Text>
                 <View style={{flexDirection:'row', width: '100%', padding: 16, alignItems:'center'}}>

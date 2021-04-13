@@ -1,3 +1,4 @@
+
 import 'react-native-gesture-handler'
 
 import React, {useContext, useEffect, useState} from 'react'
@@ -42,7 +43,6 @@ const App = () => {
 
     return null
 }
-
 
 
 export default () => (
