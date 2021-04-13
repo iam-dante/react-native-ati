@@ -11,22 +11,20 @@ import { AuthContext } from '../FirebaseConfig'
 function HomeScreen () {
     const {user} = useContext(AuthContext)
     return (
-        <MainContainer>
+        <MainContainer hidemenu>
             <View style={{width: '100%', height: 100, position: 'relative',flexDirection:'row',marginTop: 24}}>
-                <View style={{padding:24}}>
+                <View style={{paddingLeft:30, paddingTop:16}}>
                 <Text style={{fontSize:18, color: '#FFFFFF'}}>Welcome back,</Text>
-                <Text style={{fontSize: 34, color: '#FFFFFF'}}>{user.displayName}</Text>
+                <Text style={{fontSize: 40, color: '#FFFFFF'}}>{user.displayName}</Text>
                 </View>
                 <Avatar.Image
-                    style={{  position:"absolute", right: 16,}}
+                    style={{  position:"absolute", right: 16, top: 12}}
                     size={80}
                     source= {{
                         uri : user.photoURL
                     }}
                         
                 />
-
-                {/* <View style={{  position:"absolute", right: 16, borderRadius:100, width: 80, height:80, backgroundColor: "yellow", }}/> */}
             </View>
         </MainContainer>
     )

@@ -30,7 +30,7 @@ export const viewStyles = StyleSheet.create({
     }
 })
 
-export default function MainContainer ({style, children, hide}) {
+export default function MainContainer ({style, children, hide, hidemenu}) {
     const navigation = useNavigation();
     const {user} = useContext(AuthContext)
 
@@ -44,7 +44,9 @@ export default function MainContainer ({style, children, hide}) {
             containerStyle={styles.containerStyle}>
             <View style={{ flexGrow: 0.04, flexDirection: 'row', justifyContent:'center', alignItems: 'center', position: 'relative', ...viewStyles.padded }}>
                 <ATiLogoMini width={40} height={40} />
+                {
 
+                    hidemenu ? null : 
                 <TouchableOpacity
                     onPress={() => navigation.openDrawer()
                         
@@ -60,6 +62,7 @@ export default function MainContainer ({style, children, hide}) {
                         size={56}
                     />
                 </TouchableOpacity>
+                }
             </View>
 
             <View style={{ flex: 1, position:'relative', width: '100%', ...style}}>
