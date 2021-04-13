@@ -8,6 +8,7 @@ import {Avatar} from 'react-native-paper'
 import { AuthContext } from '../FirebaseConfig'
 import { Font, FontStyle} from '../../../internals/theme/fonts'
 import BlinkView from 'react-native-blink-view'
+import { SideArrow } from '../../../components/vectors/icons'
 
 
 const text = StyleSheet.create({
@@ -78,6 +79,7 @@ const userSubjectData = [
 
 function HomeScreen () {
     const {user} = useContext(AuthContext)
+
     return (
         <MainContainer hidemenu>
             <View style={{width: '100%', height: 100, position: 'relative',flexDirection:'row',marginTop: 24}}>
@@ -107,12 +109,14 @@ function HomeScreen () {
             <TouchableOpacity
                 onPress={()=>{console.log("Clicked")}}
             >
-                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'40%', marginLeft: 16,marginTop: 12}}>
-                
+                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'35%', marginLeft: 16,marginTop: 12, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderRadius: 2}}>
+                    <Text style={{...Font.baseStyle}}>See Others</Text>
+                    <SideArrow/>
                 </View>
             </TouchableOpacity>
         </MainContainer>
     )
 }
+
 
 export default HomeScreen
