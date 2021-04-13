@@ -31,9 +31,9 @@ const GoogleSignInButton = ({ onPress }) => {
 
 
 const LoginSection = ({ style }) => {
-
-  const {loginGoogle} = useContext(AuthContext)
   
+  const {loginGoogle} = useContext(AuthContext)
+
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}

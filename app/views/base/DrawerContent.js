@@ -15,15 +15,12 @@ import{
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
 import { AuthContext, signOut } from './FirebaseConfig';
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
-// import { Font, FontStyle } from '../../../internals/theme/fonts'
-// import { DrawerActions, NavigationContext, NavigationHelpersContext, useNavigation } from '@react-navigation/native'
-
 
 
 export default function DrawerContent(props){
 
     const {signOut, setstate, user, setUser} = useContext(AuthContext)
+    
     return(
         <DrawerContentScrollView {...props}>
             <View style={{paddingVertical: 48}}>

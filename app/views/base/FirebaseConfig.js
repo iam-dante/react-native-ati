@@ -11,11 +11,6 @@ GoogleSignin.configure({
   offlineAccess: false
 });
 
-// const initialData = {
-//   user: undefined, // { name, photo }
-//   isRegistered: false,
-//   isSomething: false
-// }
 
 /**
  * Stores data to store
@@ -80,8 +75,6 @@ export const Auth = ({children}) => {
             
               //  Get the users  ID token
               const  userInfo = await GoogleSignin.signIn();
-              // setUser(userInfo)
-              // setstate(true)
               
               // Create a Google credential with the token
               const googleCredential =  firebase.auth.GoogleAuthProvider.credential(userInfo.idToken, userInfo.accessToken);
@@ -108,14 +101,9 @@ export const Auth = ({children}) => {
               }
             }
       }}
-        
-    
     >
       {children}
     </AuthContext.Provider>
   )
 }
  
-
-
-

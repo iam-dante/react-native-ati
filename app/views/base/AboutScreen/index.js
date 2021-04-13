@@ -7,8 +7,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { ShareIcon, BugIcon, StarIcon, InstagramIcon, TwitterIcon,DribbleIcon, TelegramIcon, InfoIcon, AtIcon} from '../../../components/vectors/icons'
-import { fonts } from '../../../internals/theme'
-// import Text from '../../../components/typography/Text'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 
 const styles = StyleSheet.create({

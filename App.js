@@ -18,29 +18,29 @@ import LoginScreen from './app/views/base/first/LoginScreen'
 
 const App = () => {
     SplashScreen.hide()
-    // const {ready, user,setUser, state} = useContext(AuthContext)
+    const {ready, user,setUser, state} = useContext(AuthContext)
     
-    // const  onAuthStateChanged =(user) => {
-    //     setUser(user);
-    //     // if (state) setstate(false);
-    // }
+    const  onAuthStateChanged =(user) => {
+        setUser(user);
+        // if (state) setstate(false);
+    }
     
-    // useEffect(() => {
-    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    //     return subscriber; // unsubscribe on unmount
-    // }, []);
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
     
-    // // if ( !state )return null;
-    // if (ready) {
+    // if ( !state )return null;
+    if (ready) {
         
-    //     SplashScreen.hide()
-    //     if (user) {
-    //         return state ? <CoreApp /> : <FillScreen /> 
-    //     }
-    //     return <LoginScreen />
-    // }
+        SplashScreen.hide()
+        if (user) {
+            return state ? <CoreApp /> : <FillScreen /> 
+        }
+        return <LoginScreen />
+    }
 
-    return <LoginScreen/>
+    return null
 }
 
 

@@ -1,5 +1,5 @@
 /**
- * This is the Home Screen
+ * This is the FileScreen
  */
 import React from 'react'
 import { StyleSheet, View, ScrollView, Text,} from 'react-native'
@@ -8,19 +8,9 @@ import { FileIcon } from '../../../components/vectors/icons'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import {TouchableRipple} from 'react-native-paper'
 
-
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-
-    }
-})
-
 function FilesScreen () {
     return (
-        <MainContainer style={styles.container}>
+        <MainContainer style={{justifyContent: 'flex-start',alignItems: 'center'}}>
             <View style={{width: '100%' }}>
                 <Text style={{ ...Font.displayStyle, color:'white', padding:16}}>Class File</Text>
             </View>
