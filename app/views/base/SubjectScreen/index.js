@@ -1,5 +1,5 @@
 /**
- * This is the Home Screen
+ * This is the subject screen
  */
 import React from 'react'
 import { StyleSheet, View, Text} from 'react-native'
@@ -7,17 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import MainContainer, { viewStyles } from '../../../components/containers/Container/MainContainer'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    }
-})
-
 function SubjectScreen () {
     return (
-        <MainContainer style={styles.container}>
+        <MainContainer style={{justifyContent: 'flex-start',alignItems: 'center'}}>
             <View style={{ padding:16, width: '100%' }}>
                 <Text style={{ ...Font.displayStyle,color:'#FFFFFF'}}>My Subjects</Text>
             </View>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import Svg,  { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, { Circle, G, Path, Defs, ClipPath } from "react-native-svg"
 
 export function ArchiveIcon(props) {
     return (
@@ -231,6 +231,7 @@ export function InfoIcon(props) {
   )
 }
 
+
 export function DropArrow(props) {
   return (
     <Svg
@@ -273,6 +274,8 @@ export function OppsiteDropArrow(props) {
     )
   }
 
+
+
   export function GoogleIcon(props) {
     return (
       <Svg
@@ -309,4 +312,5 @@ export function OppsiteDropArrow(props) {
         </Defs>
       </Svg>
     )
-  }
+  }  
+

@@ -1,8 +1,13 @@
+
+import React, {useContext, useEffect, useState} from 'react'
 import React from 'react'
 import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import {GoogleIcon} from '../../../components/vectors/icons'
+
+import {AuthContext} from '../FirebaseConfig'
+
 
 const IntroSection = ({ style }) => {
     return (
@@ -28,13 +33,15 @@ const GoogleSignInButton = ({ onPress }) => {
     )
 }
 
-const LoginSection = ({ style,   }) => {
-  // const navigation = useNavigation();
+
+const LoginSection = ({ style }) => {
+  
+  const {loginGoogle} = useContext(AuthContext)
+
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", ...style }} >
             {/* Button */}
-            <GoogleSignInButton 
-              onPress={() => { console.log("Button was clicked") }}/>
+            <GoogleSignInButton onPress={() =>loginGoogle()} /> 
             {/* SubText */}
             <Text style={{ fontSize: 11, color: '#9E9A9A', marginVertical: 5, fontFamily: 'DMSans-Italic'}}>Exclusive to invited members only.</Text>
         </View>
@@ -42,14 +49,13 @@ const LoginSection = ({ style,   }) => {
 }
 
 export default function () {
-    return (
+  return (
       <>
-      <StatusBar backgroundColor='#000000' />
-      <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
-          <LoginSection style={{ flexGrow: 0.2 }}/>
-          {/* <Login/> */}
-      </SafeAreaView>
+        <StatusBar backgroundColor='#000000' />
+        <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
+            <LoginSection style={{ flexGrow: 0.2 }} />
+        </SafeAreaView>
       </>
     )
 }

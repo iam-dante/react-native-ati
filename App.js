@@ -1,42 +1,52 @@
 
 import 'react-native-gesture-handler'
 
-import * as React from 'react'
-// import LoginScreen from './app/views/first/LoginScreen'
-import InitialScreen from './app/views/base/first/Base'
+import React, {useContext, useEffect, useState} from 'react'
+import FillScreen from './app/views/base/first/FillScreen'
+// import InitialScreen from './app/views/base/first/Base'
 // import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
 // import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
-import { Button } from 'react-native-elements'
 import CoreApp from './app/views/base/Base';
+import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
+import auth from '@react-native-firebase/auth';
+import FirebaseStore from './app/views/base/FirebaseStore'
 import LoginScreen from './app/views/base/first/LoginScreen'
-import FillScreen  from './app/views/base/first/FillScreen'
+
 
 
 // console.disableYellowBox = true;
 
-export default () => {
-    // const [doneLoading, setDoneLoading] = useState(false)
-
-    // useEffect(() => {
-    //     const abc = setTimeout(() => {
-    //         setDoneLoading(true)
-    //     }, 2000)
-
-    //     return clearTimeout(abc)
-    // }, [])
-
-    // if (doneLoading) {
+const App = () => {
+    SplashScreen.hide()
+    const {ready, user,setUser, state} = useContext(AuthContext)
+    
+    const  onAuthStateChanged =(user) => {
+        setUser(user);
+        // if (state) setstate(false);
+    }
+    
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+    
+    // if ( !state )return null;
+    if (ready) {
+        
         SplashScreen.hide()
-    // }
+        if (user) {
+            return state ? <CoreApp /> : <FillScreen /> 
+        }
+        return <LoginScreen />
+    }
 
-    return (
-        <>
-            {/* <InitialScreen /> */}
-        <LoginScreen/>
-         {/* <FillScreen/> */}
-            {/* <CoreApp/>  */}
-        </>
-    );
+    return null
 }
 
+
+export default () => (
+    <Auth>
+        <App />
+    </Auth>
+)

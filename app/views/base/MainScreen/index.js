@@ -5,8 +5,6 @@
  * This screen would be bound with the react-navigation
  */
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 // Screens
@@ -73,6 +71,5 @@ function Base () {
         
     )
 }
-
 
 export default Base

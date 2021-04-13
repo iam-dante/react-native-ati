@@ -8,7 +8,8 @@ import { StyleSheet, View, Text,ScrollView, Linking, Share } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { ShareIcon, BugIcon, StarIcon, InstagramIcon, TwitterIcon,DribbleIcon, TelegramIcon, InfoIcon, AtIcon} from '../../../components/vectors/icons'
-import { Font, FontStyle,} from '../../../internals/theme/fonts'
+import { Font, FontStyle } from '../../../internals/theme/fonts'
+
 
 
 function AboutScreen () {

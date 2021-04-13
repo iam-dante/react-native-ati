@@ -1,24 +1,82 @@
-/**
- *jsaviov
- */
 
-import React, { useState, useRef, useEffect } from 'react'
-import { View,Text,TouchableOpacity,ScrollView,StatusBar} from 'react-native'
-import {ATiLogoMini,} from '../../../components/vectors/logo'
-import {DropArrow, OppsiteDropArrow } from '../../../components/vectors/icons'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
+import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import { Button } from 'react-native-elements'
+import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
+import { AuthContext } from '../FirebaseConfig'
+import firestore from '@react-native-firebase/firestore'
 
 
 export default function FillScreen(){
-    const [hide, setState] = useState(true)
-    const [stateUni, setUni] = useState("University of Dar es salaam")
 
-    const [hidecosure, setStateCourse] = useState(true)
-    const [cousre, setCourse] = useState("Bachelor in Computer Science")
+    //The state that save the changes from the firbase
+    const [data, uniData] = useState([])
+    const [cs, coursesData] = useState([])
+    const [ys, yearData] = useState([])
+
+
+    //State that handles the changes on the UI
+    const [hide, setState] = useState(true)
+    const [stateUni, setUni] = useState()
+
+    const [hideCosure, setStateCourse] = useState(true)
+    const [cousre, setCourse] = useState()
 
     const [hideYear, setStateYear] = useState(true)
-    const [year, setYear] = useState('First')
+    const [year, setYear] = useState()
+
+
+    //Context Provider of setRegister
+    const {setRegister} = useContext(AuthContext)
+
+
+
+    useEffect(() => {
+        const university = firestore()
+          .collection('university')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().name
+                //   console.log(name)
+                  uniData(name)
+                  setUni(name[0])
+              })
+              
+          });
+          const courses = firestore()
+          .collection('courses')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().name
+                  coursesData(name)
+                  setCourse(name[0])
+              })
+              
+          });
+
+          const years = firestore()
+          .collection('years')
+          .onSnapshot(doc => {
+              // console.log(doc)
+              doc.forEach(data =>{
+                  const name = data.data().yearname
+                  yearData(name)
+                  setYear(name[0])
+              })
+              
+          });
+          // Stop listening for updates when no longer required
+          return () => {
+            university()
+            courses()
+            years()
+            };
+      }, []);
+
 
     return(
         <>
@@ -158,6 +216,98 @@ export default function FillScreen(){
                         <Text style={{...Font.baseStyle}}>{year}</Text>
                         {
                             hideYear ?
+
+                        <View style={{position:'relative'}}>
+                            
+                        { 
+                            hide ?
+                            null:
+                            
+                            <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
+                                <ScrollView>
+                                
+                                    {
+                                        data.map((vl,ix) =>(
+                                            <TouchableOpacity key={ix} style={{padding:16}} 
+                                                onPress={()=>{
+                                                    setUni(vl)
+                                                    setState(true)
+                                                }}
+                                            >
+                                                <Text>{vl}</Text>
+                                                
+                                            </TouchableOpacity>
+                                        ))
+                                    }
+
+ 
+                        </View>
+            </View>
+
+
+{/* 
+    Course dropdown 
+*/}
+            <View style={{marginLeft:16, marginRight:16, marginTop:8}}>
+
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>COURSE</Text>
+                <TouchableOpacity
+                onBlur={()=>setState()}
+                    onPress={()=> setStateCourse(!hideCosure)}
+                >
+
+                <View style={ hideCosure  ? {position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center'}:{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center', borderWidth:2 , borderColor: '#253B51'}}>
+                        <Text style={{...Font.baseStyle}}>{cousre}</Text>
+                        {
+                            hideCosure ?
+                            <DropArrow style ={{ position: 'absolute', right: 24,}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
+                        }
+                    </View>
+                </TouchableOpacity>
+                    <View style={{position:'relative'}}>
+                        { 
+                            hideCosure ?
+                            null:
+                            
+                            <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                                <ScrollView>
+                                {
+                                        cs.map((vl,ix) =>(
+                                            <TouchableOpacity key={ix} style={{padding:16}} 
+                                                onPress={()=>{
+                                                    setCourse(vl)
+                                                    setStateCourse(true)
+                                                }}
+                                            >
+                                                <Text>{vl}</Text>
+                                                
+                                            </TouchableOpacity>
+                                        ))
+                                    }
+
+                                </ScrollView>
+                            </View>
+                        }
+                    </View>
+            </View>
+
+
+
+
+{/* 
+    The Year dropdown 
+*/}
+            <View style={{ marginLeft:16, marginRight:16, marginTop:8}}>
+
+                <Text style={{...Font.baseStyle,...FontStyle.bold, color:'#FFFFFF'}}>YEAR</Text>
+                <TouchableOpacity 
+                    onPress={()=> setStateYear(!hideYear)}
+                >
+
+                    <View style={ hideYear  ? {position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center'}:{position:'relative',width:'100%', height:52, backgroundColor:'white', padding:12, borderRadius:6, justifyContent:'center', borderWidth:2 , borderColor: '#253B51'}}>
+                        <Text style={{...Font.baseStyle}}>{year}</Text>
+                        {
+                            hideYear ?
                             <DropArrow style ={{ position: 'absolute', right: 24}}/> : <OppsiteDropArrow  style ={{ position: 'absolute', right: 24}}/>
                         }
                     </View>
@@ -167,32 +317,39 @@ export default function FillScreen(){
                             hideYear ?
                             null:
                             
-                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
-                                    <TouchableOpacity style={{padding:16}} 
-                                        onPress={()=>{
-                                            setYear('Second')
-                                            setStateYear(true)
-                                        }}
-                                    >
-                                        <Text>
-                                            Second
-                                        </Text>
-                                        
-                                    </TouchableOpacity>
+                                    
+                            {
+                                    ys.map((vl,ix) =>(
+                                        <TouchableOpacity key={ix} style={{padding:16}} 
+                                            onPress={()=>{
+                                                setYear(vl)
+                                                setStateYear(true)
+                                            }}
+                                        >
+                                            <Text>{vl}</Text>
+                                            
+                                        </TouchableOpacity>
+                                    ))
+                            } 
+                                    
                                     
                                 </ScrollView>
                             </View>
                         }
                     </View>
             </View>
+
             <View style={{marginTop: 12, position:'relative', width: '100%'}}>
                 <View style={{position:'absolute', right: 24}}>
             <Button
                 title="SUBMIT"
                 buttonStyle={{backgroundColor: '#253B51', padding: 12}}
                 titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
-                onPress={()=>{console.log("Clicked")}}
+
+                onPress={()=> setRegister(true)}
+
             />
                 </View>
             </View>
@@ -201,3 +358,5 @@ export default function FillScreen(){
     
     )
 }
+
+ 
