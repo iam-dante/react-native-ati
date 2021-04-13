@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import { ScrollView, SafeAreaView, Touchable } from 'react-native'
+import { ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { View, Text, StyleSheet } from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import BlinkView from 'react-native-blink-view'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+
 
 
 const view = StyleSheet.create({

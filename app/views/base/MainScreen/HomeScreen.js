@@ -2,12 +2,13 @@
  * This is the Home Screen
  */
 import React, { useContext } from 'react'
-import {View,Text,StyleSheet} from 'react-native'
+import {View,Text,StyleSheet, TouchableOpacity } from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import {Avatar} from 'react-native-paper'
 import { AuthContext } from '../FirebaseConfig'
 import { Font, FontStyle} from '../../../internals/theme/fonts'
 import BlinkView from 'react-native-blink-view'
+
 
 const text = StyleSheet.create({
     white: {
@@ -94,14 +95,22 @@ function HomeScreen () {
                 />
             </View>
 
-            <View style={{backgroundColor: 'black', height: 100, width: '100%',marginTop:"10%", paddingHorizontal:16}}>
-                <Text style={{color: '#FFFFFF', ...Font.baseStyle}} >You have 3 classes </Text>
+            <View style={{backgroundColor: 'black',height: 160, width: '100%',marginTop:"20%", paddingHorizontal:16, overflow: 'hidden'}}>
+                <Text style={{color: '#FFFFFF', ...Font.baseStyle,marginTop: 12, marginBottom: 24}} >You have 3 classes </Text>
                 {
                         userSubjectData.map((props, ix) => (
                             <ClassCard key={`class-card-${ix}`} {...props}/>
                         ))
                 }
+
             </View>
+            <TouchableOpacity
+                onPress={()=>{console.log("Clicked")}}
+            >
+                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'40%', marginLeft: 16,marginTop: 12}}>
+                
+                </View>
+            </TouchableOpacity>
         </MainContainer>
     )
 }
