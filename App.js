@@ -4,11 +4,6 @@ import LoginScreen from './app/views/LoginScreen'
 import SplashScreen from 'react-native-splash-screen'
 
 
-
-
-
-
-
 export default () => {
     // const [doneLoading, setDoneLoading] = useState(false)
 
