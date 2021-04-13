@@ -1,16 +1,11 @@
 
 import 'react-native-gesture-handler'
-
 import React, {useContext, useEffect, useState} from 'react'
 import FillScreen from './app/views/base/first/FillScreen'
-// import InitialScreen from './app/views/base/first/Base'
-// import ScheduleScreen from './app/views/base/MainScreen/ScheduleScreen'
-// import HomeScreen from './app/views/base/MainScreen/HomeScreen'
 import SplashScreen from 'react-native-splash-screen'
 import CoreApp from './app/views/base/Base';
 import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
 import auth from '@react-native-firebase/auth';
-import FirebaseStore from './app/views/base/FirebaseStore'
 import LoginScreen from './app/views/base/first/LoginScreen'
 
 
@@ -23,7 +18,6 @@ const App = () => {
     
     const  onAuthStateChanged =(user) => {
         setUser(user);
-        // if (state) setstate(false);
     }
     
     useEffect(() => {
@@ -31,7 +25,6 @@ const App = () => {
         return subscriber; // unsubscribe on unmount
     }, []);
     
-    // if ( !state )return null;
     if (ready) {
         
         SplashScreen.hide()

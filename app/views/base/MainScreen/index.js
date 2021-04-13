@@ -30,7 +30,7 @@ function Base () {
     return (
         
             <Tab.Navigator
-                initialRouteName={Name.SCHEDULE}
+                initialRouteName={Name.FOR_YOU}
                 activeColor="#ffffff"
                 inactiveColor="#97A5B2"
                 barStyle={{ backgroundColor: colors.primary.dark }}

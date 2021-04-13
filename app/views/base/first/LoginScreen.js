@@ -1,6 +1,5 @@
 
 import React, {useContext, useEffect, useState} from 'react'
-import React from 'react'
 import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
