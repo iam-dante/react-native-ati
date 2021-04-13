@@ -1,8 +1,8 @@
 /**
  * This is the Home Screen
  */
-import React, { useContext } from 'react'
-import {View,Text,StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useContext, useState } from 'react'
+import {View,Text,StyleSheet, TouchableOpacity,ScrollView } from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import {Avatar} from 'react-native-paper'
 import { AuthContext } from '../FirebaseConfig'
@@ -72,13 +72,13 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
 }
 
 const userSubjectData = [
-    { subject: 'MT 100', title: 'Foundation Analysis', venue: 'Yombo 03', time: '0900 - 1000' },
     { subject: 'CL 111', title: 'Communication Skills', venue: 'D01 - Luhanga Hall', time: 'live', live: true },
 ]
 
 
 function HomeScreen () {
     const {user} = useContext(AuthContext)
+    const [state, setState] = useState(true)
 
     return (
         <MainContainer hidemenu>
@@ -97,22 +97,27 @@ function HomeScreen () {
                 />
             </View>
 
-            <View style={{backgroundColor: 'black',height: 160, width: '100%',marginTop:"20%", paddingHorizontal:16, overflow: 'hidden'}}>
-                <Text style={{color: '#FFFFFF', ...Font.baseStyle,marginTop: 12, marginBottom: 24}} >You have 3 classes </Text>
-                {
+            <View style={state ?{height: 160, width: '100%',marginTop:"15%", paddingHorizontal:16, overflow: 'hidden'} :{ width: '100%',marginTop:"20%", paddingHorizontal:16}}>
+                <Text style={{color: '#FFFFFF', ...FontStyle.regular,marginTop: 12, marginBottom: 24, fontSize: 18}} >You have N classes </Text>
+            
+                    {
                         userSubjectData.map((props, ix) => (
                             <ClassCard key={`class-card-${ix}`} {...props}/>
                         ))
-                }
+                    }
 
             </View>
             <TouchableOpacity
-                onPress={()=>{console.log("Clicked")}}
+                onPress={()=>{setState(false)}}
             >
-                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'35%', marginLeft: 16,marginTop: 12, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderRadius: 2}}>
-                    <Text style={{...Font.baseStyle}}>See Others</Text>
+                {
+                    state ? 
+                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'32%', marginLeft: 16,marginTop: 12, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderRadius: 2, overflow: 'scroll'}}>
+                    <Text style={{...FontStyle.regular, fontSize: 16}}>See Others</Text>
                     <SideArrow/>
-                </View>
+                </View> : null
+
+                }
             </TouchableOpacity>
         </MainContainer>
     )

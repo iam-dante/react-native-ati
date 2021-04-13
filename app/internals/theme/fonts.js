@@ -23,4 +23,7 @@ export const FontStyle = StyleSheet.create({
     bold: {
         fontFamily: BOLD_FONT
     },
+    regular: {
+        fontFamily: BASE_FONT
+    }
 })
