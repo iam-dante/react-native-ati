@@ -314,3 +314,23 @@ export function OppsiteDropArrow(props) {
     )
   }  
 
+export function SideArrow(props) {
+  return (
+    <Svg
+      width={8}
+      height={13}
+      viewBox="0 0 8 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M1.375 1.625l5.25 5-5.25 5"
+        stroke="#304B65"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  )
+}
