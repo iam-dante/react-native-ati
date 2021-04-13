@@ -2,11 +2,77 @@
  * This is the Home Screen
  */
 import React, { useContext } from 'react'
-import {View,Text} from 'react-native'
+import {View,Text,StyleSheet} from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import {Avatar} from 'react-native-paper'
 import { AuthContext } from '../FirebaseConfig'
-import { Font, FontStyle } from '../../../internals/theme/fonts'
+import { Font, FontStyle} from '../../../internals/theme/fonts'
+import BlinkView from 'react-native-blink-view'
+
+const text = StyleSheet.create({
+    white: {
+        color: '#FFF'
+    },
+    gray: {
+        color: '#827D7D'
+    },
+    black: {
+        color: '#000'
+    }
+})
+
+const ClassCard = ({ subject, title, venue, time, live}) => {
+    const paddingHorizontal = 16
+
+    return (
+        <View style={{
+            width: '100%',
+            height: 100,
+            position: 'relative',
+            paddingHorizontal,
+            paddingVertical: 10,
+            borderRadius: 4,
+            marginBottom: 12,
+            backgroundColor: '#fff',
+        }}>
+            <Text style={{ ...Font.baseStyle, ...text.black, fontSize: 24, ...FontStyle.bold }}>{subject}</Text>
+            <Text style={{ ...Font.baseStyle, ...text.gray }}>{title}</Text>
+            <View style={{
+                position: 'absolute',
+                flexDirection: 'row',
+                flex: 1,
+                // backgroundColor: '#ccc',
+                width: '110%',
+                paddingHorizontal,
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                bottom: 10, // should match paddingVertical
+            }}>
+                <Text style={{...Font.baseStyle, textTransform: 'uppercase'}}>{venue}</Text>
+
+                {/* timed or live status */}
+
+                <View style={{backgroundColor: live ? '#FF7D7D': '#039E09', borderRadius:10, paddingHorizontal:4, flexDirection:'row', alignItems:'center'}}>
+                    {
+                        live ?
+                        (   <BlinkView  blinking delay={1000}>
+                                <View style={{height:10, width:10, backgroundColor:'red', borderRadius:5, marginHorizontal:2}} />
+                            </BlinkView>
+                        ): null
+                    }
+                    <Text style={{...Font.baseStyle, marginHorizontal:4, textTransform: 'uppercase', color:'#FFFFFF'}}>{time}</Text>
+                </View>
+                {/* <View>
+                </View> */}
+            </View>
+        </View>
+    )
+}
+
+const userSubjectData = [
+    { subject: 'MT 100', title: 'Foundation Analysis', venue: 'Yombo 03', time: '0900 - 1000' },
+    { subject: 'CL 111', title: 'Communication Skills', venue: 'D01 - Luhanga Hall', time: 'live', live: true },
+]
 
 
 function HomeScreen () {
@@ -28,8 +94,13 @@ function HomeScreen () {
                 />
             </View>
 
-            <View style={{backgroundColor: 'yellow', height: 100, width: '100%',marginTop:"10%"}}>
-                <Text>You have 3 classes </Text>
+            <View style={{backgroundColor: 'black', height: 100, width: '100%',marginTop:"10%", paddingHorizontal:16}}>
+                <Text style={{color: '#FFFFFF', ...Font.baseStyle}} >You have 3 classes </Text>
+                {
+                        userSubjectData.map((props, ix) => (
+                            <ClassCard key={`class-card-${ix}`} {...props}/>
+                        ))
+                }
             </View>
         </MainContainer>
     )
