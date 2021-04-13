@@ -30,18 +30,20 @@ const App = () => {
         return subscriber; // unsubscribe on unmount
     }, []);
     
-    // // if ( !state )return null;
-    // if (ready) {
+    // if ( !state )return null;
+    if (ready) {
         
-    //     SplashScreen.hide()
-    //     if (user) {
-    //         return state ? <CoreApp /> : <FillScreen /> 
-    //     }
-    //     return <LoginScreen />
-    // }
+        SplashScreen.hide()
+        if (user) {
+            return state ? <CoreApp /> : <FillScreen /> 
+        }
+        return <LoginScreen />
+    }
 
-    return <FillScreen/>
+    return null
 }
+
+
 
 export default () => (
     <Auth>

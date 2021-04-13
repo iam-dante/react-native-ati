@@ -1,10 +1,12 @@
-import React from 'react'
-import { ScrollView, SafeAreaView } from 'react-native'
+import React, {useState} from 'react'
+import { ScrollView, SafeAreaView, Touchable } from 'react-native'
 import { View, Text, StyleSheet } from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
-import { ATiLogoMini } from '../../../components/vectors/logo'
+// import { ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import BlinkView from 'react-native-blink-view'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+
 
 const view = StyleSheet.create({
     padded: {
@@ -25,19 +27,23 @@ const text = StyleSheet.create({
 })
 
 const DayTag = ({ label }) => {
+
+    const [cl, setcolor] = useState(true)
+    // console.log(cl)
     return (
-        <View style={{ 
-            alignItems: 'center', 
-            justifyContent:'center', 
-            flexDirection: 'column', 
-            paddingHorizontal: 12, 
-            height: 35, 
-            paddingVertical: 8, 
-            marginHorizontal: 5, 
-            backgroundColor: '#FFF', 
-            borderRadius: 2 }}>
-            <Text style={{ ...Font.baseStyle }}>{label}</Text>
+        <TouchableOpacity
+            onPress={
+             () => {setcolor(!cl)}
+            }
+        >
+
+        <View style={
+            cl ? {backgroundColor: '#FFFFFF',alignItems: 'center',justifyContent:'center', flexDirection: 'column', paddingHorizontal: 12, height: 35, paddingVertical: 8, marginHorizontal: 5, borderRadius: 2 } : {backgroundColor: 'blue',alignItems: 'center',justifyContent:'center', flexDirection: 'column', paddingHorizontal: 12, height: 35, paddingVertical: 8, marginHorizontal: 5, borderRadius: 2 }
+            
+        }>
+            <Text style={cl ? { ...Font.baseStyle, color: 'black' } : { ...Font.baseStyle, color: 'white'}}>{label}</Text>
         </View>
+        </TouchableOpacity>
     )
 }
 
