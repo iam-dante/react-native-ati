@@ -4,7 +4,7 @@
  */
 import React, { useContext } from 'react'
 import _BaseContainer from './_BaseContainer'
-import { View, StyleSheet, Text, TouchableOpacity} from 'react-native'
+import { View, StyleSheet, TouchableOpacity} from 'react-native'
 import { ATiLogoMini } from '../../vectors/logo'
 import { colors } from '../../../internals/theme'
 import { StatusBar, Button } from 'react-native'

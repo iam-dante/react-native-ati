@@ -15,21 +15,23 @@ import{
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
 import { AuthContext } from './FirebaseConfig';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function DrawerContent(props){
 
     const {signOut, setstate, user, setUser} = useContext(AuthContext)
+    // const navigation = useNavigation()
 
     const LogOut = () =>{  
         Alert.alert(  
             'Log Out',  
-            'Are you sure?',  
+            'Are you sure ?',  
             [  
                 {  
                     text: 'Cancel',  
                     onPress: () => {},  
-                      
+                    style:'cancel',   
                 },  
                 {text: 'OK', onPress: () => {
                     signOut()
@@ -68,7 +70,7 @@ export default function DrawerContent(props){
                                 borderTopWidth: 1,
                                 justifyContent:'center', alignSelf: 'stretch', paddingVertical: 24, paddingHorizontal: 8, alignContent: 'stretch', }}>
                 <DrawerItem
-                    label={() => <Text style={{ ...Font.baseStyle, color: '#FFF'}}>Log out</Text>}
+                    label={() => <Text style={{ ...Font.baseStyle, color: '#FF0000'}}>Log out</Text>}
                     labelStyle={{color:'#FF0000', color:''}}
                     style={{ width: '100%', paddingHorizontal: 16}}
                     onPress={() => {LogOut()}}

@@ -8,7 +8,7 @@ import SubjectScreen from './SubjectScreen'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerContent from './DrawerContent'
-import { Font, FontStyle } from '../../internals/theme/fonts'
+import {FontStyle } from '../../internals/theme/fonts'
 
 const Drawer = createDrawerNavigator();
 
