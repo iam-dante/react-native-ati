@@ -26,8 +26,6 @@ const App = () => {
     }, []);
     
     if (ready) {
-        
-        SplashScreen.hide()
         if (user) {
             return state ? <CoreApp /> : <FillScreen /> 
         }

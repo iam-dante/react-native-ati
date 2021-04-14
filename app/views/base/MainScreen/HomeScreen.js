@@ -71,6 +71,10 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
     )
 }
 
+
+/**
+ *Dumb data  
+ */ 
 const userSubjectData = [
     { subject: 'CL 111', title: 'Communication Skills', venue: 'D01 - Luhanga Hall', time: 'live', live: true },
 ]
@@ -84,11 +88,11 @@ function HomeScreen () {
         <MainContainer hidemenu>
             <View style={{width: '100%', height: 100, position: 'relative',flexDirection:'row',marginTop: 24}}>
                 <View style={{paddingLeft:16, paddingTop:16}}>
-                <Text style={{color: '#FFFFFF', ...Font.baseStyle}}>Welcome back,</Text>
+                <Text style={{color: '#FFFFFF', ...FontStyle.regular, fontSize: 18}}>Welcome back,</Text>
                 <Text style={{color: '#FFFFFF', ...Font.displayStyle}}>{user.displayName}</Text>
                 </View>
                 <Avatar.Image
-                    style={{  position:"absolute", right: 16, top: 12}}
+                    style={{  position:"absolute", right: 24, top: 12}}
                     size={80}
                     source= {{
                         uri : user.photoURL
@@ -112,7 +116,7 @@ function HomeScreen () {
             >
                 {
                     state ? 
-                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'32%', marginLeft: 16,marginTop: 12, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderRadius: 2, overflow: 'scroll'}}>
+                <View  style ={{height: 50, backgroundColor:'#D9E6FF', width:'32%', marginLeft: 16,marginTop: 12, flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', borderRadius: 4, overflow: 'scroll'}}>
                     <Text style={{...FontStyle.regular, fontSize: 16}}>See Others</Text>
                     <SideArrow/>
                 </View> : null

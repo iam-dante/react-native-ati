@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, Alert} from 'react-native';
 import{
     DrawerContentScrollView,
     DrawerItem,
@@ -14,12 +14,31 @@ import{
     Drawer,
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
-import { AuthContext, signOut } from './FirebaseConfig';
+import { AuthContext } from './FirebaseConfig';
 
 
 export default function DrawerContent(props){
 
     const {signOut, setstate, user, setUser} = useContext(AuthContext)
+
+    const LogOut = () =>{  
+        Alert.alert(  
+            'Log Out',  
+            'Are you sure?',  
+            [  
+                {  
+                    text: 'Cancel',  
+                    onPress: () => {},  
+                      
+                },  
+                {text: 'OK', onPress: () => {
+                    signOut()
+                    setstate(false)
+                    setUser('')
+                }},  
+            ]  
+        );  
+    }  
     
     return(
         <DrawerContentScrollView {...props}>
@@ -52,12 +71,7 @@ export default function DrawerContent(props){
                     label={() => <Text style={{ ...Font.baseStyle, color: '#FFF'}}>Log out</Text>}
                     labelStyle={{color:'#FF0000', color:''}}
                     style={{ width: '100%', paddingHorizontal: 16}}
-                    onPress={() => {
-                        signOut()
-                        setstate(false)
-                        setUser('')
-                    }
-                    }
+                    onPress={() => {LogOut()}}
                     />
             </Drawer.Section>
         </DrawerContentScrollView>
