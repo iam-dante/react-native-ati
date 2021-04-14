@@ -25,14 +25,14 @@ const App = () => {
         return subscriber; // unsubscribe on unmount
     }, []);
     
-    if (ready) {
-        if (user) {
-            return state ? <CoreApp /> : <FillScreen /> 
-        }
-        return <LoginScreen />
-    }
+    // if (ready) {
+    //     if (user) {
+    //         return state ? <CoreApp /> : <FillScreen /> 
+    //     }
+    //     return <LoginScreen />
+    // }
 
-    return null
+    return <FillScreen />
 }
 
 

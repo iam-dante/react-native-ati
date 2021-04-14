@@ -7,15 +7,11 @@ import{
 } from '@react-navigation/drawer';
 import{
     Avatar,
-    Title,
     Text,
-    Switch,
-    TouchableRipple,
     Drawer,
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
 import { AuthContext } from './FirebaseConfig';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function DrawerContent(props){

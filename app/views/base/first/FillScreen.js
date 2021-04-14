@@ -8,7 +8,7 @@ import { AuthContext } from '../FirebaseConfig'
 import firestore from '@react-native-firebase/firestore'
 
 
-export default function FillScree(){
+export default function FillScreen(){
 
      //The state that save the changes from the firbase
      const [data, uniData] = useState([])
