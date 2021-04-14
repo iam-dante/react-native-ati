@@ -12,6 +12,7 @@ import LoginScreen from './app/views/base/first/LoginScreen'
 
 // console.disableYellowBox = true;
 
+
 const App = () => {
     SplashScreen.hide()
     const {ready, user,setUser, state} = useContext(AuthContext)
@@ -25,12 +26,12 @@ const App = () => {
         return subscriber; // unsubscribe on unmount
     }, []);
     
-    // if (ready) {
-    //     if (user) {
-    //         return state ? <CoreApp /> : <FillScreen /> 
-    //     }
-    //     return <LoginScreen />
-    // }
+    if (ready) {
+        if (user) {
+            return state ? <CoreApp /> : <FillScreen /> 
+        }
+        return <LoginScreen />
+    }
 
     return <FillScreen />
 }

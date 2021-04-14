@@ -6,7 +6,18 @@ import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
 import { AuthContext } from '../FirebaseConfig'
 import firestore from '@react-native-firebase/firestore'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const storeData = async (key, vl) =>{
+    try{
+        const value = JSON.stringify(vl)
+        await AsyncStorage.setItem(key, value);
+    }
+    catch(e) {
+      console.log(e)
+      throw e
+    }
+}
 
 export default function FillScreen(){
 
@@ -75,6 +86,8 @@ export default function FillScreen(){
              years()
              };
        }, []);
+
+    
 
     return(
         <>
@@ -231,7 +244,12 @@ export default function FillScreen(){
                 title="SUBMIT"
                 buttonStyle={{backgroundColor: '#253B51', padding: 12}}
                 titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
-                onPress={()=>{setRegister(true)}}
+                onPress={()=>{
+                    setRegister(true)
+                    storeData("university@register", stateUni)
+                    storeData("course@register", cousre)
+                    storeData('year@register', year)
+                }}
             />
                 </View>
             </View>
@@ -240,3 +258,5 @@ export default function FillScreen(){
     
     )
 }
+
+

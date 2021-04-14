@@ -5,7 +5,10 @@ import firestore from '@react-native-firebase/firestore'
 const FirebaseStore = () =>{
     const [data, setData] = useState([])
     
-
+    /**
+     * Playground of testing the fiebase techniques 
+     * 
+     */
     
 
 
