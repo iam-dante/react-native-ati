@@ -8,8 +8,6 @@ import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
 import auth from '@react-native-firebase/auth';
 import LoginScreen from './app/views/base/first/LoginScreen'
 
-
-
 // console.disableYellowBox = true;
 
 
@@ -33,7 +31,8 @@ const App = () => {
         return <LoginScreen />
     }
 
-    return <FillScreen />
+    return null
+    
 }
 
 

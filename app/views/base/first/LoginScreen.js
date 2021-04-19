@@ -1,11 +1,12 @@
 
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import { View, Text, StatusBar,SafeAreaView } from 'react-native'
 import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import {GoogleIcon} from '../../../components/vectors/icons'
 
 import {AuthContext} from '../FirebaseConfig'
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 const IntroSection = ({ style }) => {
@@ -48,9 +49,17 @@ const LoginSection = ({ style }) => {
 }
 
 export default function () {
+    const {spinner} = useContext(AuthContext)
   return (
       <>
         <StatusBar backgroundColor='#000000' />
+        <Spinner
+            visible={spinner}
+            color="#8DACC9'"
+            animation='slide'
+
+
+        />
         <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
             <LoginSection style={{ flexGrow: 0.2 }} />

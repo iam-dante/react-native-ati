@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AboutScreen from './AboutScreen'
 import MainScreen from './MainScreen'
 import UniversityScreen from './UniversityScreen'
@@ -9,13 +9,20 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerContent from './DrawerContent'
 import { Font, FontStyle } from '../../internals/theme/fonts'
+import {AuthContext} from './FirebaseConfig'
+
+
 
 const Drawer = createDrawerNavigator();
 
 
+
 export default () =>{
+    
+
     return (
     <NavigationContainer>
+    
         <Drawer.Navigator 
         initialRouteName='Home' 
         drawerPosition='right'
