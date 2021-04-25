@@ -47,6 +47,7 @@ export const Auth = ({children}) => {
   const [user, setUser] = useState(null)
   const [registered, register] = useState(false)
   const [spinner, loading] = useState(false)
+  const[toast, showToast] = useState(false)
 
   useEffect( () => {
     getData('user@register')
@@ -66,6 +67,8 @@ export const Auth = ({children}) => {
           setstate: register,
           setUser,
           spinner,
+          toast,
+          showToast,
           loading,
           setRegister: (val) => {
             register(val)
@@ -89,11 +92,22 @@ export const Auth = ({children}) => {
         
         
             }catch(e){
-              if (e.code === statusCodes.SIGN_IN_CANCELLED) {
-                loading(false)
-              }
-              console.log(e)
-            }},
+              switch(e.code){
+                case "7":
+                  loading(false)
+                  showToast(true)
+                  console.log("Network Error")
+                  break;
+
+                case statusCodes.SIGN_IN_CANCELLED:
+                  loading(false)
+                  break;
+                
+                
+                // default:
+                //   console.log("Something happen")
+              } 
+          }},
 
             signOut: async function signOut(){
               try {

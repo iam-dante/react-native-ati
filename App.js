@@ -8,6 +8,7 @@ import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
 import auth from '@react-native-firebase/auth';
 import LoginScreen from './app/views/base/first/LoginScreen'
 
+
 // console.disableYellowBox = true;
 
 
@@ -38,6 +39,8 @@ const App = () => {
 
 export default () => (
     <Auth>
-        <App />
+
+            <App />
+
     </Auth>
 )
