@@ -121,7 +121,7 @@ export default function FillScreen(){
                             hide ?
                             null:
                             
-                            <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
+                            <View style={{elevation:3, position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
                                 <ScrollView>
                                 {
                                     data.map((vl,ix) =>(
@@ -167,7 +167,7 @@ export default function FillScreen(){
                             hideCosure ?
                             null:
                             
-                            <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{ elevation:3, position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                     
                                 {
@@ -217,7 +217,7 @@ export default function FillScreen(){
                             hideYear ?
                             null:
                             
-                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{elevation:3,position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                 {
                                     ys.map((vl,ix) =>(

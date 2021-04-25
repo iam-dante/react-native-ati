@@ -95,7 +95,7 @@ export const Auth = ({children}) => {
               console.log(e)
             }},
 
-            signOut: async function signOut (){
+            signOut: async function signOut(){
               try {
                 await GoogleSignin.revokeAccess();
                 await GoogleSignin.signOut();
