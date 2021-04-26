@@ -94,9 +94,10 @@ export const Auth = ({children}) => {
             }catch(e){
               switch(e.code){
                 case "7":
-                  loading(false)
                   showToast(true)
+                  loading(false)
                   console.log("Network Error")
+                  // showToast(false)
                   break;
 
                 case statusCodes.SIGN_IN_CANCELLED:
