@@ -1,12 +1,12 @@
 
 import 'react-native-gesture-handler'
 import React, {useContext, useEffect, useState} from 'react'
-import FillScreen from './app/views/base/first/FillScreen'
+import FillScreen from './app/views/base/InitialScreens/FillScreen'
 import SplashScreen from 'react-native-splash-screen'
 import CoreApp from './app/views/base/Base';
 import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
 import auth from '@react-native-firebase/auth';
-import LoginScreen from './app/views/base/first/LoginScreen'
+import LoginScreen from './app/views/base/InitialScreens/LoginScreen'
 
 
 // console.disableYellowBox = true;
@@ -40,7 +40,7 @@ const App = () => {
 export default () => (
     <Auth>
 
-            <App />
+        <App />
 
     </Auth>
 )

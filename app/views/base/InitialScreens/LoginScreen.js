@@ -1,9 +1,9 @@
 
 import React, {useContext} from 'react'
 import { View, Text, StatusBar,SafeAreaView, TouchableOpacity } from 'react-native'
-import { ATiLogo } from '../../SplashScreen'
+// import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
-import {GoogleIcon, WarningSign} from '../../../components/vectors/icons'
+import {GoogleIcon, WarningSign, ATiLogo} from '../../../components/vectors/icons'
 import {AuthContext} from '../FirebaseConfig'
 import Spinner from 'react-native-loading-spinner-overlay';
 import { animated, useTransition } from '@react-spring/native'
@@ -12,9 +12,9 @@ import ToastMessage from '../../../components/components/ToastMessage'
 
 const IntroSection = ({ style }) => {
     return (
-        <View style={{ flexGrow: 0.8, justifyContent: "center", alignItems: "flex-start", ...style}} >
+        <View style={{ flexGrow: 0.8, justifyContent: "center", alignItems: "flex-start", ...style,}} >
             <ATiLogo style={{ marginVertical: 10 }} />
-            <Text style={{ fontSize: 16, fontFamily: 'DMSans-Regular'}}>
+            <Text style={{ fontSize: 16, fontFamily: 'DMSans-Regular', }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Cras bibendum mauris vitae tellus mollis sollicitudin. Cras efficitur sollicitudin tempor. 
                 Suspendisse fels diam, malesuada non risus nec, tincidunt vestibulum erat.
@@ -71,28 +71,30 @@ export default function () {
 
   return (
       <>
-        <StatusBar backgroundColor='#000000' />     
+        <StatusBar backgroundColor='#000000' />    
+
         {/* Loading spinner */}
         <Spinner
             visible={spinner}
-            color="#8DACC9'"
+            color="#8DACC9"
             animation='slide'
         />
 
         <SafeAreaView  style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%'}} />
+            <IntroSection style={{ flexGrow: 0.8, paddingHorizontal: '10%', }} />
             <LoginSection style={{ flexGrow: 0.2 }} />
   
           {
             props((style, item) => item ?
               (<ToastMessage
                 headTitle= "Warning"
+                headTitleColor={{color: "#FF0000" }}
                 subTitle= "Some wrong with the internet connection"
                 icon={<WarningSign/>}
+                backGroundColor={{backgroundColor : "#FFE4E4"}}
                 style={style}
-
               />)
-
+              
               : null)
 
           }
