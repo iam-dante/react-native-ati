@@ -8,7 +8,6 @@ export default function ToastMessage({headTitle, subTitle, icon, style, backGrou
     const AnimatedView = animated(View)
     
       return(
-
         <AnimatedView style={{height:90, zIndex:999,  width:'100%', paddingHorizontal:12,paddingBottom:12, position:'absolute', ...style, }}>
             <View style={{width:'100%', height:'100%', borderRadius:5, flexDirection:'row', alignItems:'center', paddingHorizontal:20, elevation:2, ...backGroundColor}}>
                 {icon}
