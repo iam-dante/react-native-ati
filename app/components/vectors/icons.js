@@ -334,3 +334,24 @@ export function SideArrow(props) {
     </Svg>
   )
 }
+
+export function WarningSign(props) {
+  return (
+    <Svg
+      width={30}
+      height={30}
+      viewBox="0 0 20 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <Path
+        d="M9.931 7v2m0 4h.01m-6.938 4H16.86c1.54 0 2.502-1.667 1.732-3L11.663 2C10.893.667 8.97.667 8.2 2L1.271 14c-.77 1.333.192 3 1.732 3z"
+        stroke="#F80000"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  )
+}
