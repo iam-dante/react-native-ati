@@ -3,6 +3,7 @@ import { ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { View, Text, StyleSheet } from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
+import BlinkingView from '../../../components/components/BlinkingView'
 
 
 
@@ -85,7 +86,7 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
                     {
                         live ?
                         (  
-                                <View style={{height:10, width:10, backgroundColor:'red', borderRadius:5, marginHorizontal:2}} />
+                               <BlinkingView/>
                             
                         ): null
                     }

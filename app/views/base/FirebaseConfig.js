@@ -2,7 +2,7 @@ import firebase from '@react-native-firebase/app'
 import auth from'@react-native-firebase/auth';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin'
 import React, { createContext, useEffect, useReducer, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {storeData, getData} from '../../core/AsyncStorage'
 
 export const AuthContext = createContext();
 
@@ -10,35 +10,6 @@ GoogleSignin.configure({
   webClientId: "67287288053-v9lo7e7j44ok51234896fra31smhmgdl.apps.googleusercontent.com",
   offlineAccess: false
 });
-
-
-/**
- * Stores data to store
- */
-export const storeData = async (key, vl) =>{
-  try{
-      const value = JSON.stringify(vl)
-      await AsyncStorage.setItem(key, value);
-  }
-  catch(e) {
-    console.log(e)
-    throw e
-  }
-}
-
-/**
- * Loads data from store
- */
-const getData = async (key) =>{
-  try{
-    const value =  await AsyncStorage.getItem(key)
-    return JSON.parse(value)
-  }
-  catch(e){
-    console.log(e)
-    throw e
-  }
-}
 
 
 export const Auth = ({children}) => {
