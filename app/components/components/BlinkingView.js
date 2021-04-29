@@ -6,11 +6,11 @@ import {animated, useSpring} from 'react-spring/native'
 export default function BlinkingView(){
     const AnimatedView = animated(View)
     const props = useSpring({
-        loop: true,
+        loop: {reverse: true},
         to:{opacity: 1 },
         from:{opacity: 0},
         reset: true,
-        delay: 200
+        delay: 200,
     })
 
     return (
