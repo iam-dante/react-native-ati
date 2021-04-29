@@ -26,4 +26,14 @@ export const getData = async (key) =>{
       console.log(e)
       throw e
     }
+}
+
+export const clearAll = async () => {
+    try {
+      await AsyncStorage.clear()
+    } catch(e) {
+      // clear error
+    }
+  
+    console.log('Done. Clearing all async stored data')
   }

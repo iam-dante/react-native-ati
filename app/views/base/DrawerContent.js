@@ -12,6 +12,7 @@ import{
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
 import { AuthContext } from './FirebaseConfig';
+import {clearAll} from '../../core/AsyncStorage'
 
 
 export default function DrawerContent(props){
@@ -31,6 +32,7 @@ export default function DrawerContent(props){
                 },  
                 {text: 'OK', onPress: () => {
                     signOut()
+                    clearAll()
                     setstate(false)
                     setUser('')
                 }},  
