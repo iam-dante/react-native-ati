@@ -9,7 +9,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerContent from './DrawerContent'
 import { Font, FontStyle } from '../../internals/theme/fonts'
-import {AuthContext} from './FirebaseConfig'
+import {AuthContext} from './ContentProvider'
 
 
 

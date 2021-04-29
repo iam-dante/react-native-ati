@@ -11,7 +11,7 @@ import{
     Drawer,
 } from 'react-native-paper'
 import { Font } from '../../internals/theme/fonts';
-import { AuthContext } from './FirebaseConfig';
+import { AuthContext } from './ContentProvider';
 import {clearAll} from '../../core/AsyncStorage'
 
 

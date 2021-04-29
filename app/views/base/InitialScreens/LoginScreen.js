@@ -4,7 +4,7 @@ import { View, Text, StatusBar,SafeAreaView, TouchableOpacity } from 'react-nati
 // import { ATiLogo } from '../../SplashScreen'
 import { Button } from 'react-native-elements'
 import {GoogleIcon, WarningSign, ATiLogo} from '../../../components/vectors/icons'
-import {AuthContext} from '../FirebaseConfig'
+import {AuthContext} from '../ContentProvider'
 import Spinner from 'react-native-loading-spinner-overlay';
 import { animated, useTransition } from '@react-spring/native'
 import ToastMessage from '../../../components/components/ToastMessage'

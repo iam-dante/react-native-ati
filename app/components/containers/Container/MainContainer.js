@@ -11,7 +11,7 @@ import { StatusBar, Button } from 'react-native'
 import { Avatar} from 'react-native-paper'
 
 import {useNavigation} from '@react-navigation/native'
-import { AuthContext } from '../../../views/base/FirebaseConfig'
+import { AuthContext } from '../../../views/base/ContentProvider'
 
 
 

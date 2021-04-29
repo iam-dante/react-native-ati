@@ -28,6 +28,10 @@ export const getData = async (key) =>{
     }
 }
 
+/**
+ * Clearing  data from store
+ */
+
 export const clearAll = async () => {
     try {
       await AsyncStorage.clear()

@@ -4,8 +4,11 @@ import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-si
 import React, { createContext, useEffect, useReducer, useState } from 'react';
 import {storeData, getData} from '../../core/AsyncStorage'
 
+//Content Provider
 export const AuthContext = createContext();
 
+
+// Configuration Google signing and firebase access
 GoogleSignin.configure({
   webClientId: "67287288053-v9lo7e7j44ok51234896fra31smhmgdl.apps.googleusercontent.com",
   offlineAccess: false
@@ -15,9 +18,16 @@ GoogleSignin.configure({
 export const Auth = ({children}) => {
   // Ready State
   const [ready, set] = useState(false)
+
+  //UserInfo State
   const [user, setUser] = useState(null)
+
   const [registered, register] = useState(false)
+
+  //Spinnner Loading state initialization
   const [spinner, loading] = useState(false)
+
+  //Toast message state intialization
   const[toast, showToast] = useState(false)
 
   useEffect( () => {
@@ -45,6 +55,7 @@ export const Auth = ({children}) => {
             register(val)
             storeData('user@register', val)
           },
+          
           loginGoogle: async function onGoogleButtonPress() {
             try{
               console.log("Sign in")
@@ -64,20 +75,22 @@ export const Auth = ({children}) => {
         
             }catch(e){
               switch(e.code){
+
+                // Code : 7 NETWORK_EEROR, error in internet connection
                 case "7":
                   showToast(true)
                   loading(false)
                   console.log("Network Error")
-                  // showToast(false)
                   break;
 
+                // Cancelling siging process
                 case statusCodes.SIGN_IN_CANCELLED:
                   loading(false)
                   break;
                 
                 
-                // default:
-                //   console.log("Something happen")
+                default:
+                  console.log(e)
               } 
           }},
 

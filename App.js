@@ -4,7 +4,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import FillScreen from './app/views/base/InitialScreens/FillScreen'
 import SplashScreen from 'react-native-splash-screen'
 import CoreApp from './app/views/base/Base';
-import {Auth,AuthContext} from './app/views/base/FirebaseConfig'
+import {Auth,AuthContext} from './app/views/base/ContentProvider'
 import auth from '@react-native-firebase/auth';
 import LoginScreen from './app/views/base/InitialScreens/LoginScreen'
 
