@@ -5,7 +5,7 @@ import React from 'react'
 import { StyleSheet, Text,View, ScrollView} from 'react-native'
 import MainContainer from '../../../components/containers/Container/MainContainer'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
-import BlinkView from 'react-native-blink-view'
+
 
 const styles = StyleSheet.create({
     container: {
@@ -77,9 +77,9 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
                 <View style={{backgroundColor: live ? '#FF7D7D': '#039E09', borderRadius:10, paddingHorizontal:4, flexDirection:'row', alignItems:'center'}}>
                     {
                         live ?
-                        (   <BlinkView blinking delay={1000} >
+                        (   
                                 <View style={{height:10, width:10, backgroundColor:'red', borderRadius:5, marginHorizontal:2}} />
-                            </BlinkView>
+                            
                         ): null
                     }
                     <Text style={{...Font.baseStyle, marginHorizontal:4, textTransform: 'uppercase', color:'#FFFFFF'}}>{time}</Text>

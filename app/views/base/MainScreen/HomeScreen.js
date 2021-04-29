@@ -7,8 +7,8 @@ import MainContainer from '../../../components/containers/Container/MainContaine
 import {Avatar} from 'react-native-paper'
 import { AuthContext } from '../FirebaseConfig'
 import { Font, FontStyle} from '../../../internals/theme/fonts'
-import BlinkView from 'react-native-blink-view'
 import { SideArrow } from '../../../components/vectors/icons'
+import BlinkingView from '../../../components/components/BlinkingView'
 
 
 const text = StyleSheet.create({
@@ -25,6 +25,7 @@ const text = StyleSheet.create({
 
 const ClassCard = ({ subject, title, venue, time, live}) => {
     const paddingHorizontal = 16
+    
 
     return (
         <View style={{
@@ -57,9 +58,9 @@ const ClassCard = ({ subject, title, venue, time, live}) => {
                 <View style={{backgroundColor: live ? '#FF7D7D': '#039E09', borderRadius:10, paddingHorizontal:4, flexDirection:'row', alignItems:'center'}}>
                     {
                         live ?
-                        (   <BlinkView  blinking delay={1000}>
-                                <View style={{height:10, width:10, backgroundColor:'red', borderRadius:5, marginHorizontal:2}} />
-                            </BlinkView>
+                        (  
+                            <BlinkingView/> 
+                            
                         ): null
                     }
                     <Text style={{...Font.baseStyle, marginHorizontal:4, textTransform: 'uppercase', color:'#FFFFFF'}}>{time}</Text>
