@@ -6,18 +6,8 @@ import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
 import { AuthContext } from '../ContentProvider'
 import firestore from '@react-native-firebase/firestore'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {storeData} from '../../../core/AsyncStorage'
 
-const storeData = async (key, vl) =>{
-    try{
-        const value = JSON.stringify(vl)
-        await AsyncStorage.setItem(key, value);
-    }
-    catch(e) {
-      console.log(e)
-      throw e
-    }
-}
 
 export default function FillScreen(){
 

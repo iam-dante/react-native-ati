@@ -4,6 +4,8 @@ import firestore from '@react-native-firebase/firestore'
 
 const FirebaseStore = () =>{
     const [data, setData] = useState([])
+
+    const listData = []
     
     /**
      * Playground of testing the fiebase techniques 
@@ -19,19 +21,18 @@ const FirebaseStore = () =>{
     //  }
    
         useEffect(() => {
-            const obj ={}
             const subscriber = firestore()
-                .collection('university')
+                .collection('test')
                 .onSnapshot(doc => {
                     // console.log(doc)
                     doc.forEach(dc =>{
-                    obj[dc.id] = dc.data().name
-                    })
+                    // console.log(dc.id, dc.data().name)
+                    listData.push({id: dc.id, name: dc.data().name})
 
-                    setData(obj)
-                    for(let key in obj){
-                        console.log(key)
-                    }
+                    
+
+                    
+                    })
                     
                 });
             
@@ -39,7 +40,13 @@ const FirebaseStore = () =>{
             return () => subscriber();
         }, []);
  
-    
+    function list(){
+        return (
+            listData.map(vl =>{
+                console.log(vl.id, vl.name)
+            })
+        )
+    }
     
     return(
         <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
@@ -56,8 +63,14 @@ const FirebaseStore = () =>{
             
             <Button
             title="Add"
-            // onPress={}
+            onPress={list}
             />
+
+            {
+                listData.map(vl =>{
+                    console.log(vl)
+                })
+            }
         </View>
     )
 }
