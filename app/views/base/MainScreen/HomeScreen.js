@@ -89,8 +89,8 @@ function HomeScreen () {
         <MainContainer hidemenu>
             <View style={{width: '100%', height: 100, position: 'relative',flexDirection:'row',marginTop: 24}}>
                 <View style={{paddingLeft:16, paddingTop:16}}>
-                <Text style={{color: '#FFFFFF', ...FontStyle.regular, fontSize: 18}}>Welcome back,</Text>
-                <Text style={{color: '#FFFFFF', ...Font.displayStyle}}>{user.displayName}</Text>
+                <Text style={{color: '#FFFFFF', ...FontStyle.regular, fontSize: 18,}}>Welcome back,</Text>
+                <Text style={{color: '#FFFFFF', ...Font.displayStyle,}}>{user.displayName}</Text>
                 </View>
                 <Avatar.Image
                     style={{  position:"absolute", right: 24, top: 12}}

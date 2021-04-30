@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
+import { View,Text,TouchableOpacity,ScrollView,StatusBar, } from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
-import { Button } from 'react-native-elements'
 import {DropArrow, OppsiteDropArrow, SuccessfullyLogo} from '../../../components/vectors/icons'
 import { AuthContext } from '../ContentProvider'
 import firestore from '@react-native-firebase/firestore'
 import {storeData} from '../../../core/AsyncStorage'
 import ToastMessage from '../../../components/components/ToastMessage'
 import { useTransition } from '@react-spring/native'
+import {Button} from 'react-native-paper'
 
 
 export default function FillScreen(){
@@ -256,17 +256,17 @@ export default function FillScreen(){
             </View>
             <View style={{marginTop: 12, position:'relative', width: '100%'}}>
                 <View style={{position:'absolute', right: 24}}>
-            <Button
-                title="SUBMIT"
-                buttonStyle={{backgroundColor: '#253B51', padding: 12}}
-                titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
+            <TouchableOpacity
+                style={{backgroundColor: '#253B51', padding: 12, borderRadius: 4}}
                 onPress={()=>{
                     setRegister(true)
                     storeData("university@register", stateUni)
                     storeData("course@register", cousre)
                     storeData('year@register', year)
                 }}
-            />
+            >
+                <Text style={{color: 'white', ...Font.baseStyle, ...FontStyle.bold}}>SUBMIT</Text>
+            </TouchableOpacity>
                 </View>
             </View>
         </View>

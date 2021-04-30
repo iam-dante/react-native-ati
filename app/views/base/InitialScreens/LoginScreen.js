@@ -2,7 +2,7 @@
 import React, {useContext} from 'react'
 import { View, Text, StatusBar,SafeAreaView, TouchableOpacity } from 'react-native'
 // import { ATiLogo } from '../../SplashScreen'
-import { Button } from 'react-native-elements'
+// import { Button } from 'react-native-elements'
 import {GoogleIcon, WarningSign, ATiLogo} from '../../../components/vectors/icons'
 import {AuthContext} from '../ContentProvider'
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -25,12 +25,22 @@ const IntroSection = ({ style }) => {
 
 const GoogleSignInButton = ({ onPress }) => {
     return (
-        <Button
+        // <Button
+        //     onPress={onPress}
+        //     icon={<GoogleIcon/>}
+        //     iconRight
+        //     buttonStyle={{ paddingHorizontal: 30, width: '80%', paddingVertical: 10, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center'}}
+        //     titleStyle={{ fontStyle: 'normal', fontFamily: 'DMSans-Bold' }} title="Sign in with Google" />
+        <TouchableOpacity
             onPress={onPress}
-            icon={<GoogleIcon/>}
-            iconRight
-            buttonStyle={{ paddingHorizontal: 30, width: '80%', paddingVertical: 10, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center'}}
-            titleStyle={{ fontStyle: 'normal', fontFamily: 'DMSans-Bold' }} title="Sign in with Google" />
+            style={{paddingHorizontal: 30, width: '80%',height:53, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center', backgroundColor: '#1D8EC2'}}
+            rippleColor='#8DACC9'
+        >   
+            <GoogleIcon/>
+            <Text style={{fontStyle: 'normal', fontFamily: 'DMSans-Bold', color: 'white', fontSize: 18}}>Sign in with Google</Text>
+        </TouchableOpacity>
+
+        
     )
 }
 
