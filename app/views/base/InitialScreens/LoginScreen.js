@@ -6,7 +6,7 @@ import { Button } from 'react-native-elements'
 import {GoogleIcon, WarningSign, ATiLogo} from '../../../components/vectors/icons'
 import {AuthContext} from '../ContentProvider'
 import Spinner from 'react-native-loading-spinner-overlay';
-import { animated, useTransition } from '@react-spring/native'
+import { useTransition } from '@react-spring/native'
 import ToastMessage from '../../../components/components/ToastMessage'
 
 
@@ -54,8 +54,6 @@ const LoginSection = ({ style }) => {
 export default function () {
     const {spinner, toast, showToast} = useContext(AuthContext)
 
-    // React-srping into view
-    const AnimatedView = animated(View)
 
     //Configuration for the transitons
     const props = useTransition(toast,{

@@ -3,13 +3,25 @@ import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
 import { Button } from 'react-native-elements'
-import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
+import {DropArrow, OppsiteDropArrow, SuccessfullyLogo} from '../../../components/vectors/icons'
 import { AuthContext } from '../ContentProvider'
 import firestore from '@react-native-firebase/firestore'
 import {storeData} from '../../../core/AsyncStorage'
+import ToastMessage from '../../../components/components/ToastMessage'
+import { useTransition } from '@react-spring/native'
 
 
 export default function FillScreen(){
+
+    const [show, hideToast] = useState(true)
+    //Configuration for the transitons
+    const props = useTransition(show,{
+        from: {  bottom: -100 },
+        enter: { bottom: 2 },
+        config:{mass:12, friction:40},
+        leave: { bottom: -100 },
+        onRest: () => hideToast(false)
+    })
 
      //The state that save the changes from the firbase
      const [data, uniData] = useState([])
@@ -40,7 +52,7 @@ export default function FillScreen(){
                // console.log(doc)
                doc.forEach(data =>{
                    const name = data.data().name
-                 //   console.log(name)
+                //    console.log(name)
                    uniData(name)
                    setUni(name[0])
                })
@@ -83,6 +95,20 @@ export default function FillScreen(){
         <>
         <StatusBar backgroundColor="#304B65"/>
         <View style={{backgroundColor:'#8DACC9', flex:1}}>
+
+            {
+                props((style, item) => item ?
+                (<ToastMessage
+                  headTitle= "Successfully"
+                  headTitleColor={{color: "#007A14" }}
+                  subTitle= "Login successfully"
+                  icon={<SuccessfullyLogo/>}
+                  backGroundColor={{backgroundColor : "#DBF8E8"}}
+                  style={style}
+                />)
+                
+                : null)
+            }
             <View style={{justifyContent:'center', alignItems:'center', paddingTop: 32}}>
                 <ATiLogoMini width={40} height={40} />
             </View>

@@ -7,7 +7,6 @@ import CoreApp from './app/views/base/Base';
 import {Auth,AuthContext} from './app/views/base/ContentProvider'
 import auth from '@react-native-firebase/auth';
 import LoginScreen from './app/views/base/InitialScreens/LoginScreen'
-import FirebaseStore from './app/views/base/FirebaseStore';
 // import FirebaseStore from './app/views/base/FirebaseStore'
 
 
