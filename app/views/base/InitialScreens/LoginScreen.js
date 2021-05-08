@@ -33,11 +33,12 @@ const GoogleSignInButton = ({ onPress }) => {
         //     titleStyle={{ fontStyle: 'normal', fontFamily: 'DMSans-Bold' }} title="Sign in with Google" />
         <TouchableOpacity
             onPress={onPress}
-            style={{paddingHorizontal: 30, width: '80%',height:53, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center', backgroundColor: '#1D8EC2'}}
-            rippleColor='#8DACC9'
+            activeOpacity= {200}
         >   
-            <GoogleIcon/>
-            <Text style={{fontStyle: 'normal', fontFamily: 'DMSans-Bold', color: 'white', fontSize: 18}}>Sign in with Google</Text>
+        <View  style={{paddingHorizontal: 30, width: '80%',height:53, borderRadius: 300,  flexDirection: 'row', justifyContent:'space-evenly', alignItems: 'center', backgroundColor: '#1D8EC2'}}>
+        <GoogleIcon/>
+        <Text style={{fontStyle: 'normal', fontFamily: 'DMSans-Bold', color: 'white', fontSize: 18}}>Sign in with Google</Text>
+        </View>
         </TouchableOpacity>
 
         
