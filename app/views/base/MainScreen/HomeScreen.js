@@ -87,13 +87,16 @@ function HomeScreen () {
 
     return (
         <MainContainer hidemenu>
-            <View style={{width: '100%', height: 100, position: 'relative',flexDirection:'row',marginTop: 24}}>
+            <View style={{width: '100%', position: 'relative',flexDirection:'row',marginTop: 24, paddingVertical: 20}}>
                 <View style={{paddingLeft:16, paddingTop:16}}>
                 <Text style={{color: '#FFFFFF', ...FontStyle.regular, fontSize: 18,}}>Welcome back,</Text>
-                <Text style={{color: '#FFFFFF', ...Font.displayStyle,}}>{user.displayName}</Text>
+                {
+                    user.displayName.length < 13 ? 
+                    <Text style={{color: '#FFFFFF', ...Font.displayStyle}}>{user.displayName}</Text> : <Text style={{color: '#FFFFFF', ...Font.displayStyle, width: 200}}>{user.displayName}</Text>
+                }
                 </View>
                 <Avatar.Image
-                    style={{  position:"absolute", right: 24, top: 12}}
+                    style={{  position:"absolute", right: 24, top: 30}}
                     size={80}
                     source= {{
                         uri : user.photoURL
@@ -102,8 +105,8 @@ function HomeScreen () {
                 />
             </View>
 
-            <View style={state ?{height: 160, width: '100%',marginTop:"15%", paddingHorizontal:16, overflow: 'hidden'} :{ width: '100%',marginTop:"20%", paddingHorizontal:16}}>
-                <Text style={{color: '#FFFFFF', ...FontStyle.regular,marginTop: 12, marginBottom: 24, fontSize: 18}} >You have N classes </Text>
+            <View style={state ?{height: 160, width: '100%',marginTop:"2%", paddingHorizontal:16, overflow: 'hidden'} :{ width: '100%',marginTop:"20%", paddingHorizontal:16}}>
+                <Text style={{color: '#FFFFFF', ...FontStyle.bold,marginTop: 12, marginBottom: 24, fontSize: 18,}} >You have N classes </Text>
             
                     {
                         userSubjectData.map((props, ix) => (
