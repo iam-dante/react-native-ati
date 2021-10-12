@@ -39,7 +39,7 @@ export default function MainContainer ({style, children, hide, hidemenu}) {
             statusBar={() => (
                 <StatusBar
                     hidden={false}
-                    backgroundColor={colors.primary.dark} />
+                    backgroundColor={colors.primary.dark}/>
             )}  
             containerStyle={styles.containerStyle}>
             <View style={{ flexGrow: 0.04, flexDirection: 'row', justifyContent:'center', alignItems: 'center', position: 'relative', ...viewStyles.padded }}>

@@ -1,27 +1,14 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
-import { View,Text,TouchableOpacity,ScrollView,StatusBar, } from 'react-native'
+import { View,Text,TouchableOpacity,ScrollView,StatusBar,} from 'react-native'
 import {ATiLogoMini } from '../../../components/vectors/logo'
 import { Font, FontStyle } from '../../../internals/theme/fonts'
-import {DropArrow, OppsiteDropArrow, SuccessfullyLogo} from '../../../components/vectors/icons'
-import { AuthContext } from '../ContentProvider'
+import { Button } from 'react-native-elements'
+import {DropArrow, OppsiteDropArrow} from '../../../components/vectors/icons'
+import { AuthContext } from '../FirebaseConfig'
 import firestore from '@react-native-firebase/firestore'
-import {storeData} from '../../../core/AsyncStorage'
-import ToastMessage from '../../../components/components/ToastMessage'
-import { useTransition } from '@react-spring/native'
-import {Button} from 'react-native-paper'
 
 
-export default function FillScreen(){
-
-    const [show, hideToast] = useState(true)
-    //Configuration for the transitons
-    const props = useTransition(show,{
-        from: {  bottom: -100 },
-        enter: { bottom: 2 },
-        config:{mass:12, friction:40},
-        leave: { bottom: -100 },
-        onRest: () => hideToast(false)
-    })
+export default function FillScree(){
 
      //The state that save the changes from the firbase
      const [data, uniData] = useState([])
@@ -52,7 +39,7 @@ export default function FillScreen(){
                // console.log(doc)
                doc.forEach(data =>{
                    const name = data.data().name
-                //    console.log(name)
+                 //   console.log(name)
                    uniData(name)
                    setUni(name[0])
                })
@@ -89,26 +76,10 @@ export default function FillScreen(){
              };
        }, []);
 
-    
-
     return(
         <>
         <StatusBar backgroundColor="#304B65"/>
         <View style={{backgroundColor:'#8DACC9', flex:1}}>
-
-            {
-                props((style, item) => item ?
-                (<ToastMessage
-                  headTitle= "Successfully"
-                  headTitleColor={{color: "#007A14" }}
-                  subTitle= "Login successfully"
-                  icon={<SuccessfullyLogo/>}
-                  backGroundColor={{backgroundColor : "#DBF8E8"}}
-                  style={style}
-                />)
-                
-                : null)
-            }
             <View style={{justifyContent:'center', alignItems:'center', paddingTop: 32}}>
                 <ATiLogoMini width={40} height={40} />
             </View>
@@ -133,29 +104,29 @@ export default function FillScreen(){
                 </TouchableOpacity>
                         <View style={{position:'relative'}}>
                             
-                            { 
-                                hide ?
-                                null:
-                                
-                                <View style={{elevation:3, position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
-                                    <ScrollView>
-                                    {
-                                        data.map((vl,ix) =>(
-                                            <TouchableOpacity key={ix} style={{padding:16}} 
-                                                onPress={()=>{
-                                                    setUni(vl)
-                                                    setState(true)
-                                                }}
-                                            >
-                                                <Text>{vl}</Text>
-                                                
-                                            </TouchableOpacity>
-                                        ))
-                                } 
-                                        
-                                    </ScrollView>
-                                </View>
-                            }
+                        { 
+                            hide ?
+                            null:
+                            
+                            <View style={{ position: 'absolute', width:'100%',backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:10}}>
+                                <ScrollView>
+                                {
+                                    data.map((vl,ix) =>(
+                                        <TouchableOpacity key={ix} style={{padding:16}} 
+                                            onPress={()=>{
+                                                setUni(vl)
+                                                setState(true)
+                                            }}
+                                        >
+                                            <Text>{vl}</Text>
+                                            
+                                        </TouchableOpacity>
+                                    ))
+                            } 
+                                    
+                                </ScrollView>
+                            </View>
+                        }
                         </View>
             </View>
 
@@ -183,7 +154,7 @@ export default function FillScreen(){
                             hideCosure ?
                             null:
                             
-                            <View style={{ elevation:3, position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{ position: 'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:220, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                     
                                 {
@@ -233,7 +204,7 @@ export default function FillScreen(){
                             hideYear ?
                             null:
                             
-                            <View style={{elevation:3,position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
+                            <View style={{position:'absolute',width:'100%', backgroundColor:'#FFFFFF', maxHeight:160, borderRadius:4, marginTop:2, zIndex:20}}>
                                 <ScrollView>
                                 {
                                     ys.map((vl,ix) =>(
@@ -256,17 +227,12 @@ export default function FillScreen(){
             </View>
             <View style={{marginTop: 12, position:'relative', width: '100%'}}>
                 <View style={{position:'absolute', right: 24}}>
-            <TouchableOpacity
-                style={{backgroundColor: '#253B51', padding: 12, borderRadius: 4}}
-                onPress={()=>{
-                    setRegister(true)
-                    storeData("university@register", stateUni)
-                    storeData("course@register", cousre)
-                    storeData('year@register', year)
-                }}
-            >
-                <Text style={{color: 'white', ...Font.baseStyle, ...FontStyle.bold}}>SUBMIT</Text>
-            </TouchableOpacity>
+            <Button
+                title="SUBMIT"
+                buttonStyle={{backgroundColor: '#253B51', padding: 12}}
+                titleStyle={{...Font.baseStyle, ...FontStyle.bold}}
+                onPress={()=>{setRegister(true)}}
+            />
                 </View>
             </View>
         </View>
@@ -274,5 +240,3 @@ export default function FillScreen(){
     
     )
 }
-
-

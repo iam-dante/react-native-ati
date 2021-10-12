@@ -33,5 +33,6 @@ function _BaseContainer ({ children, statusBar, containerStyle }) {
     )
 }
 
+
 export default _BaseContainer
 

@@ -10,6 +10,8 @@ import { useTransition } from '@react-spring/native'
 import ToastMessage from '../../../components/components/ToastMessage'
 
 
+
+
 const IntroSection = ({ style }) => {
     return (
         <View style={{ flexGrow: 0.8, justifyContent: "center", alignItems: "flex-start", ...style,}} >
