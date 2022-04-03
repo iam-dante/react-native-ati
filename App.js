@@ -1,4 +1,3 @@
-
 import 'react-native-gesture-handler'
 import React, {useContext, useEffect} from 'react'
 import FillScreen from './app/views/base/InitialScreens/FillScreen'
