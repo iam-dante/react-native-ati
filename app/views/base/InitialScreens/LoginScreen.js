@@ -14,7 +14,7 @@ const IntroSection = ({ style }) => {
     return (
         <View style={{ flexGrow: 0.8, justifyContent: "center", alignItems: "flex-start", ...style,}} >
             <ATiLogo style={{ marginVertical: 10 }} />
-            <Text style={{ fontSize: 16, fontFamily: 'DMSans-Regular', }}>
+            <Text style={{ fontSize: 16, fontFamily: 'DMSans-Regular', marginTop:20 }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Cras bibendum mauris vitae tellus mollis sollicitudin. Cras efficitur sollicitudin tempor. 
                 Suspendisse fels diam, malesuada non risus nec, tincidunt vestibulum erat.

@@ -10,7 +10,7 @@ import LoginScreen from './app/views/base/InitialScreens/LoginScreen'
 // import FirebaseStore from './app/views/base/FirebaseStore'
 
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 
 
 const App = () => {
